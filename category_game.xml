@@ -80,6 +80,11 @@
 				src="xmb://localhost/dev_hdd0/game/PS3PETXMB/USRDIR/pett_xmb.xml#pett_xmb_main"
 				/>
 			<Query
+				class="type:x-xmb/folder-pixmap"
+				key="game_xmbm_hdd0"
+				src="xmb://localhost/dev_hdd0/game/XMBMANPLS/USRDIR/game_main.xml#seg_xmb_hdd0_app"
+				/>
+			<Query
 				 class="type:x-xmb/folder-pixmap"
 				 key="han_xmb_addon1"
 				 src="xmb://localhost/dev_hdd0/game/HANXMBA01/USRDIR/han_xmb_addon1.xml#han_xmb_addon1_main"
