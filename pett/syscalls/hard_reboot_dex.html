@@ -29,6 +29,7 @@ function initROP(init)
 		
 		//############################ Building xtra_data ############################################################
 		stack_frame=stack_frame_hookup()
+		+callsub(gadget12_addr,2,0,0,0,0,0,0,0,0,0x80)
 		+syscall(sc_sm_shutdown,hard_reboot,0,0,0,0,0,0,0)
 		+stack_frame_exit();
 		//############################ End stack frame ###############################################################
