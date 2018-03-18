@@ -16,8 +16,6 @@ function initROP(init)
 		
 		//############################ Set xtra_data pointers and values #############################################
 		xtra_data=start_x.convert()
-		+ps3xploit_ecdsa_key.convert(true)
-		+index_key.convert(true)
 		+unescape("\uFD7E");
 		while(xtra_data_addr===0)
 		{
@@ -26,10 +24,6 @@ function initROP(init)
 			xtra_data_addr=findJsVariableOffset("xtra_data",xtra_data,search_base,search_size);
 			search_max_threshold-=search_size;
 		}
-		
-		
-		ps3xploit_ecdsa_key_addr=xtra_data_addr+start_x.convertedSize()-0x4;
-		index_key_addr=ps3xploit_ecdsa_key_addr+ps3xploit_ecdsa_key.convertedSize(true);
 		//############################ End xtra_data #################################################################
 		
 		
