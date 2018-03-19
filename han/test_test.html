@@ -106,6 +106,9 @@ function triggerX()
 	<body id="bodyId" style="background-color:#FFFFFF" onload="initROP(true);">
 	<div id="headerId">
 	<h1>PS3Xploit Running....</h1>
+	<span id="hideme" style="visibility:hidden"><select id="comboactPath" name="actPath" size="1" onChange="selectfilePath()"/></span>
+	<span id="hideme" style="visibility:hidden"><option id="path_0" selected="selected" value="xxxx/dev_usb000/act.dat">/dev_usb000</option></span>
+	<span id="hideme" style="visibility:hidden"><input type="text" name="rif_file" id="txtrif" size="40" value="XXXXXX-XXXXXXXXX_XX-XXXXXXXXXXXXXXXX.rif"/></span>
 	<span id="hideme" style="visibility:hidden"><input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/></span>
 	<!-- <input type="checkbox" id="auto_reboot" name="areboot" checked="checked" onclick="autoreboot();"/> -->
 	<div id="result"></div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="ps3xploit_v30.js"></script>
+<script src="ps3xploit_v31.js"></script>
 <meta charset="UTF-8"> 
 <title>PS3Xploit Tools v3.1 - PS3 ACT/IDPS Dumper Auto</title>
 <script>
@@ -141,6 +141,9 @@ function triggerX()
 	<body id="bodyId" style="background-color:#FFFFFF" onload="initROP(true);">
 	<div id="headerId">
 	<h1>Dumping ACT.DAT and IDPS.HEX....</h1>
+	<span id="hideme" style="visibility:hidden"><select id="comboactPath" name="actPath" size="1" onChange="selectfilePath()"/></span>
+	<span id="hideme" style="visibility:hidden"><option id="path_0" selected="selected" value="xxxx/dev_usb000/act.dat">/dev_usb000</option></span>
+	<span id="hideme" style="visibility:hidden"><input type="text" name="rif_file" id="txtrif" size="40" value="XXXXXX-XXXXXXXXX_XX-XXXXXXXXXXXXXXXX.rif"/></span>
 	<span id="hideme" style="visibility:hidden"><input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/></span>
 	<div id="result"></div>
 	<div id="log"></div>
