@@ -9,6 +9,7 @@ function initROP(init)
 {
 	try
 	{
+		if(getRifValue().length!==0x28){alert('Invalid RIF Filename!');return;}
 		if(init===true){frame_fails=0;search_base_off=0;search_size_ext=0;}
 		if(t_out!==0){clearTimeout(t_out);t_out=0;}
 		offset_array=[];

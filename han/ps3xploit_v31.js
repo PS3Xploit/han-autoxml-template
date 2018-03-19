@@ -85,6 +85,8 @@ var idps_len=0x10;
 var act_fsize=0x1038;
 var rif_fsize=0x98;
 var offset_array=[];
+var store_idx_arr1;
+var store_idx_arr2;
 var br="<br>";
 var hr="<hr>";
 var t_out=0;
@@ -1452,7 +1454,8 @@ function initDefaults()
 	stack_frame_addr=0;
 	jump_2_addr=0;
 	jump_1_addr=0;
-	ps3xploit_ecdsa_key_addr=0, index_key_addr=0;
+	ps3xploit_ecdsa_key_addr=0;
+	index_key_addr=0;
 	search_max_threshold=70*0x100000; // 70Mb maximum memory search
 	search_base=0x80100000;//0x80190000;//
 	search_size=2*mbytes;

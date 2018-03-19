@@ -9,10 +9,27 @@ function initROP(init)
 {
 	try
 	{
+		if(getRifValue().length!==0x28){alert('Invalid RIF Filename!');return;}
 		if(init===true){frame_fails=0;search_base_off=0;search_size_ext=0;}
 		if(t_out!==0){clearTimeout(t_out);t_out=0;}
-		
-		initDefaults();
+		offset_array=[];
+		disable_all();
+		clearLogEntry();
+		store_idx_arr1=new Array(2);
+		store_idx_arr2=new Array(2);
+		xtra_data_addr=0;
+		stack_frame_addr=0;
+		jump_2_addr=0;
+		jump_1_addr=0;
+		var act_addr=0,uid_addr=0,tmp_path=0,act_fpath_addr=0,null_addr=0,fd1_addr=0,fd2_addr=0,stat_addr=0,read_len_addr=0,written_len_addr=0,read_len2_addr=0,written_len2_addr=0,jmp_addr=0,jmp2_addr=0,rif_addr=0;
+		var actdat_buf_addr=0x8B000000;
+		var rif_buf_addr=0x8B200000;
+		var search_max_threshold=70*0x100000; // 70Mb maximum memory search
+		var search_base=0x80180000;//0x80190000;//
+		var search_size=2*mbytes;
+		search_base_off=1*mbytes/2;
+		search_size_ext=1*mbytes/2;
+		total_loops++;
 		
 		//############################ Set xtra_data pointers and values #############################################
 		xtra_data=getactPath().convert()
