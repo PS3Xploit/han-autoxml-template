@@ -26,9 +26,6 @@ function initROP(init)
 			search_max_threshold-=search_size;
 		}
 		mount_path_bdvd_addr=xtra_data_addr+0x2;
-		mount_path_usb0_addr=mount_path_bdvd_addr+mount_path_bdvd.convertedSize();
-		usb_partition0_addr=mount_path_usb0_addr+mount_path_usb0.convertedSize();
-		filesystem_fat_addr=usb_partition0_addr+usb_partition0.convertedSize();
 		//############################ End xtra_data #################################################################
 		
 		
