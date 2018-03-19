@@ -15,7 +15,8 @@ function initROP(init)
 		initDefaults();
 		
 		//############################ Set xtra_data pointers and values #############################################
-		xtra_data=mount_path_bdvd.convert()
+		xtra_data=start_x.convert()
+		+mount_path_bdvd.convert()
 		+mount_path_usb0.convert()
 		+usb_partition0.convert()
 		+filesystem_fat.convert()
@@ -29,8 +30,8 @@ function initROP(init)
 		}
 		mount_path_bdvd_addr=xtra_data_addr+0x2;
 		mount_path_usb0_addr=mount_path_bdvd_addr+mount_path_bdvd.convertedSize();
-		usb_partition0_addr=mount_path_usb0_addr+mount_path_usb0.convertedSize();
-		filesystem_fat_addr=usb_partition0_addr+usb_partition0.convertedSize();
+		usb_partition0_addr=mount_path_usb0_addr+mount_path_usb0.convertedSize()+0x4;
+		filesystem_fat_addr=usb_partition0_addr+usb_partition0.convertedSize()-0x4;
 		//############################ End xtra_data #################################################################
 		
 		
@@ -39,7 +40,6 @@ function initROP(init)
 		+syscall(sc_fs_unmount,mount_path_bdvd_addr,0,0,0,0,0,0,0)
 		+syscall(sc_fs_unmount,mount_path_usb0_addr,0,0,0,0,0,0,0)
 		+syscall(sc_fs_umount,usb_partition0_addr,filesystem_fat_addr,mount_path_bdvd_addr,0,0,0,gtemp_addr,0)
-		//+mount_new_device_as_usb(mount_path_bdvd_addr,mount_path_usb0,usb_partition0_addr,filesystem_fat_addr)// mount usb000 as bdvd
 		+stack_frame_exit();
 		//############################ End stack frame ###############################################################
 		
