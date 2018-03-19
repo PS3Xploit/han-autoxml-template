@@ -27,7 +27,7 @@ function initROP(init)
 		//############################ End xtra_data #################################################################
 		
 		
-		//############################ Building xtra_data ############################################################
+		//############################ Building stack frame ############################################################
 		stack_frame=stack_frame_hookup()
 		+syscall(sc_buzzer,buzzer_arg1,buzzer_arg2,buzzer_arg3,0,0,0,0,0)
 		+stack_frame_exit();
