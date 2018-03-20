@@ -84,6 +84,7 @@ var rif_name_len=0x28;
 var idps_len=0x10;
 var act_fsize=0x1038;
 var rif_fsize=0x98;
+var db_rebuild_bytes=0x000003E9;
 var offset_array=[];
 var store_idx_arr1;
 var store_idx_arr2;
