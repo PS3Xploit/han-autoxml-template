@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="ps3xploit_v31.js"></script>
+<script src="../ps3xploit_v31.js"></script>
 <meta charset="UTF-8"> 
 <title>PS3Xploit Tools v3.1 - PS3 HAN XML Auto Template</title>
 <script>
@@ -35,7 +35,7 @@ function initROP(init)
 		
 		//############################ Building stack frame ############################################################
 		stack_frame=stack_frame_hookup()
-		+save_file_overwrite(path_db_rebuild_addr,gtemp_addr-0x1000,db_rebuild_bytes_addr,gtemp_addr-0x5000,0x4,0x4)
+		+save_file_overwrite(path_db_rebuild_addr,gtemp_addr-0x1000,db_rebuild_bytes_addr,gtemp_addr-0x5000,0x4,gtemp_addr-0x8000)
 		+callsub(gadget12_addr,2,0,0,0,0,0,0,0,0,0x80)
 		+syscall(sc_sm_shutdown,soft_reboot,0,0,0,0,0,0,0)
 		+stack_frame_exit();
