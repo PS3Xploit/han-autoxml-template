@@ -84,7 +84,14 @@ var rif_name_len=0x28;
 var idps_len=0x10;
 var act_fsize=0x1038;
 var rif_fsize=0x98;
+var dummy_value="dummy";
+var fread="rb";
+var fwrite="wb";
+var fread_addr=0;
+var fwrite_addr=0;
 var db_rebuild_bytes=0x000003E9;
+var db_rebuild_bytes_addr=0;
+var path_db_rebuild="/dev_hdd0/mms/db.err";
 var offset_array=[];
 var store_idx_arr1;
 var store_idx_arr2;
@@ -1157,10 +1164,9 @@ function save_file_overwrite(to,fd,buf,wlen,size,nl)
 }
 function mount_new_device(devsrc,devdest,part,fs,ptr)
 {
-	return syscall(sc_fs_unmount,devsrc,0,0,0,0,0,0,0);
-		+syscall(sc_fs_unmount, devdest,0,0,0,0,0,0,0);
-		if(ptr){+syscall(sc_fs_umount,part,fs,devdest,0,0,0,gtemp_addr,0);}
-		if(!ptr){+syscall(sc_fs_umount,part,fs,devdest,0,0,0,0,0);}
+	return syscall(sc_fs_unmount,devsrc,0,0,0,0,0,0,0)
+		+syscall(sc_fs_unmount, devdest,0,0,0,0,0,0,0)
+		if(ptr){+syscall(sc_fs_umount,part,fs,devdest,0,0,0,gtemp_addr,0);}else{+syscall(sc_fs_umount,part,fs,devdest,0,0,0,0,0);}
 }
 function optional_reboot_novalidation(unlink_ptr,shutdown_type,null_ptr)
 {
