@@ -99,6 +99,7 @@ var store_idx_arr2;
 var br="<br>";
 var hr="<hr>";
 var t_out=0;
+var size_validate_addr=0
 var ps3xploit_ecdsa_key_addr=0;
 var index_key_addr=0;
 var mount_path_blind_addr=0;
@@ -288,6 +289,7 @@ var gadget_mod13_addr_481_d=0x33E480;
 var gadget_mod14_addr_481_d=0x63AAE0;
 var gadget_mod15_addr_481_d=0x3A4C28;
 var gadget_mod16_addr_481_d=0x4FEF1C;
+var e_fopen_write_close=0x42B708;
 //VSH CEX 4.81
 var toc_addr_481 = 0x6F5520;
 var default_vsh_pub_toc_481=0x6ED574;
@@ -334,6 +336,7 @@ var gadget_mod13_addr_481=0x33686C;
 var gadget_mod14_addr_481=0x632EC4;
 var gadget_mod15_addr_481=0x39D034;
 var gadget_mod16_addr_481=0x4F7328;
+var e_fopen_write_close=0x423B14;
 //CEX 4.82
 
 var toc_addr_482 = 0x6F5550;
@@ -381,6 +384,7 @@ var gadget_mod13_addr_482=0x336870; //store_r3 gadget
 var gadget_mod14_addr_482=0x633860; //load r3 dword
 var gadget_mod15_addr_482=0x39D038; //load r3 word
 var gadget_mod16_addr_482=0x4F732C; //set toc
+var e_fopen_write_close=0x423B18;
 
 function hexh2bin(hex_val)
 {
