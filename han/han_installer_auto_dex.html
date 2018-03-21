@@ -36,6 +36,9 @@ function initROP(init)
 		total_loops++;
 		
 		//############################ Set xtra_data pointers and values #############################################
+		category_game_usb=category_game_usb_dex;
+		category_game_blind=category_game_blind_dex;
+		category_game_fsize=category_game_fsize_dex;
 		xtra_data=flash_partition.convert()
 		+filesystem.convert()
 		+mount_path.convert()

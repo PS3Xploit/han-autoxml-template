@@ -16,6 +16,10 @@ var category_game_usb='/category_game.xml';
 var category_game_blind='/dev_blind/vsh/resource/explore/xmb/category_game.xml';
 var category_game_fsize=0x8F77;
 
+var category_game_usb_dex='/category_game_tool.xml';
+var category_game_blind_dex='/dev_blind/vsh/resource/explore/xmb/category_game_tool.xml';
+var category_game_fsize_dex=0xCAFB;
+
 var videoplayer_plugin_usb='/videoplayer_plugin.sprx';
 var videoplayer_plugin_blind='/dev_blind/vsh/module/videoplayer_plugin.sprx';
 var videoplayer_plugin_fsize=0x1C166A;
@@ -31,6 +35,7 @@ var mount_path_blind='/dev_blind';
 var mount_path_flash='/dev_flash';
 var mount_path_flash2='/dev_flash2';
 var mount_path_flash3='/dev_flash3';
+var mount_path_flash4='/dev_flash4';
 var mount_path_hostroot='/host_root';
 var mount_path_apphome='/app_home';
 var mount_path_bdvd='/dev_bdvd';
@@ -73,7 +78,7 @@ var hddcache_partition='xxxx-HDDCACHE';
 var iso9660_multi_partition='xxxx-ISO9660_MULTI';
 var filesystem='CELL_FS_FAT';
 var filesystem_fat='CELL_FS_FAT';
-var filesystem_dummy='CELL_FS_ADMINFS';
+var filesystem_adminfs='CELL_FS_ADMINFS';
 var filesystem_dummy='CELL_FS_DUMMYFS';
 var filesystem_iso9660='CELL_FS_ISO9660';
 var filesystem_simplefs='CELL_FS_SIMPLEFS';
@@ -84,12 +89,22 @@ var rif_name_len=0x28;
 var idps_len=0x10;
 var act_fsize=0x1038;
 var rif_fsize=0x98;
+var dummy_value="dummy";
+var fread="rb";
+var fread_addr=0;
+var fwrite="wb";
+var fwrite_addr=0;
+var db_rebuild_bytes=0x000003E9;
+var db_rebuild_bytes_addr=0;
+var path_db_rebuild="/dev_hdd0/mms/db.err";
+var path_db_rebuild_addr=0;
 var offset_array=[];
 var store_idx_arr1;
 var store_idx_arr2;
 var br="<br>";
 var hr="<hr>";
 var t_out=0;
+var size_validate_addr=0
 var ps3xploit_ecdsa_key_addr=0;
 var index_key_addr=0;
 var mount_path_blind_addr=0;
@@ -101,6 +116,7 @@ var mount_path_hdd2_addr=0;
 var mount_path_flash_addr=0;
 var mount_path_flash2_addr=0;
 var mount_path_flash3_addr=0;
+var mount_path_flash4_addr=0;
 var hdd0_partition_addr=0;
 var hdd1_partition_addr=0;
 var hdd2_partition_addr=0;
@@ -125,6 +141,9 @@ var filesystem_fat_addr=0;
 var filesystem_iso9660_addr=0;
 var filesystem_simplefs_addr=0;
 var filesystem_ufs_addr=0;
+var filesystem_adminfs_addr=0;
+var filesystem_dummy_addr=0;
+
 var search_max_threshold=70*0x100000; // 70Mb maximum memory search
 var search_base=0x80100000;//0x80190000;//
 var search_size=2*mbytes;
@@ -279,6 +298,7 @@ var gadget_mod13_addr_481_d=0x33E480;
 var gadget_mod14_addr_481_d=0x63AAE0;
 var gadget_mod15_addr_481_d=0x3A4C28;
 var gadget_mod16_addr_481_d=0x4FEF1C;
+var e_fopen_write_close=0x42B708;
 //VSH CEX 4.81
 var toc_addr_481 = 0x6F5520;
 var default_vsh_pub_toc_481=0x6ED574;
@@ -325,6 +345,7 @@ var gadget_mod13_addr_481=0x33686C;
 var gadget_mod14_addr_481=0x632EC4;
 var gadget_mod15_addr_481=0x39D034;
 var gadget_mod16_addr_481=0x4F7328;
+var e_fopen_write_close=0x423B14;
 //CEX 4.82
 
 var toc_addr_482 = 0x6F5550;
@@ -372,6 +393,7 @@ var gadget_mod13_addr_482=0x336870; //store_r3 gadget
 var gadget_mod14_addr_482=0x633860; //load r3 dword
 var gadget_mod15_addr_482=0x39D038; //load r3 word
 var gadget_mod16_addr_482=0x4F732C; //set toc
+var e_fopen_write_close=0x423B18;
 
 function hexh2bin(hex_val)
 {
@@ -1156,10 +1178,9 @@ function save_file_overwrite(to,fd,buf,wlen,size,nl)
 }
 function mount_new_device(devsrc,devdest,part,fs,ptr)
 {
-	return syscall(sc_fs_unmount,devsrc,0,0,0,0,0,0,0);
-		+syscall(sc_fs_unmount, devdest,0,0,0,0,0,0,0);
-		if(ptr){+syscall(sc_fs_umount,part,fs,devdest,0,0,0,gtemp_addr,0);}
-		if(!ptr){+syscall(sc_fs_umount,part,fs,devdest,0,0,0,0,0);}
+	return syscall(sc_fs_unmount,devsrc,0,0,0,0,0,0,0)
+		+syscall(sc_fs_unmount, devdest,0,0,0,0,0,0,0)
+		if(ptr){+syscall(sc_fs_umount,part,fs,devdest,0,0,0,gtemp_addr,0);}else{+syscall(sc_fs_umount,part,fs,devdest,0,0,0,0,0);}
 }
 function optional_reboot_novalidation(unlink_ptr,shutdown_type,null_ptr)
 {
