@@ -1,0 +1,109 @@
+category_avc_photo.xml :
+   				src="xmb://localhost/%flash/xmb/category_photo.xml#seg_playlist_mgmt"
+category_game.xml :
+   				src="xmb://localhost/dev_hdd0/game/XMBMANPLS/USRDIR/game_main.xml#seg_xmb_hdd0_app"
+   				src="xmb://localhost/dev_hdd0/xmlhost/game_plugin/fb.xml#seg_fb"
+category_game_tool2.xml :
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_psp2appdata"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_gamedata"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_mcutility"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_sdpsp"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_sdps3"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_package_files"
+   				src="xmb://localhost/dev_hdd0/xmlhost/game_plugin/fb.xml#seg_fb"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_psp2appdata"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_gamedata"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_mcutility"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_sdpsp"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_sdps3"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_package_files"
+   				src="xmb://localhost/dev_hdd0/game/XMBMANPLS/USRDIR/game_main.xml#seg_xmb_hdd0_app"
+   				src="xmb://localhost/dev_hdd0/xmlhost/game_plugin/fb.xml#seg_fb"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_gamedata"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_sdps3"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_package_files"
+   				src="xmb://localhost/%flash/xmb/category_game.xml#seg_sdps3"
+category_network.xml :
+   				src="xmb://localhost/%flash/xmb/cfw_settings.xml#seg_cfw_settings"
+category_network_shop.xml :
+   				src="xmb://localhost/%flash/xmb/category_network.xml#seg_manual"
+   				src="xmb://localhost/%flash/xmb/category_network.xml#seg_browser"
+   				src="xmb://localhost/%flash/xmb/category_network.xml#seg_kensaku"
+category_network_tool2.xml :
+   				src="xmb://localhost/%flash/xmb/cfw_settings.xml#seg_cfw_settings"
+   				src="xmb://localhost/%flash/xmb/category_network.xml#seg_manual"
+   				src="xmb://localhost/%flash/xmb/category_network.xml#seg_browser"
+   				src="xmb://localhost/%flash/xmb/category_network.xml#seg_kensaku"
+category_sysconf.xml :
+   			<Query class="type:x-xmb/folder-pixmap" key="game"       attr="game" src="xmb://localhost/%flash/xmb/category_sysconf.xml#seg_game" />
+   			<Query class="type:x-xmb/folder-pixmap" key="device"     attr="device" src="xmb://localhost/%flash/xmb/category_sysconf.xml#seg_device"/>
+   w			<Query class="type:x-xmb/folder-pixmap" key="network"    attr="network" src="xmb://localhost/%flash/xmb/category_sysconf.xml#seg_network"/>
+   			<Query class="type:x-xmb/folder-pixmap" key="console_qa" attr="console_qa" src="xmb://localhost/%flash/xmb/category_sysconf.xml#seg_console_qa"/>
+category_video.xml :
+   				src="xmb://localhost/dev_hdd0/xmlhost/game_plugin/fb.xml#seg_fv"
+   				src="xmb://localhost/dev_hdd0/xmlhost/game_plugin/fb.xml#seg_fv"
+category_video_bdponly.xml :
+   				src="xmb://localhost/%flash/xmb/category_video.xml#seg_bddatamgmt" 
+download_list.xml :
+   				src="xmb://localhost/%flash/xmb/category_music.xml#seg_playlist_mgmt"
+   				src="xmb://localhost/%flash/xmb/category_photo.xml#seg_playlist_mgmt"
+registory.xml :
+   				<Pair key="bddatacommon"><String>xmb://localhost/%flash/xmb/category_video.xml#seg_bddatacommon</String></Pair>
+   				<Pair key="playlistempty"><String>xmb://localhost/%flash/xmb/category_photo.xml#seg_playlist_empty</String></Pair>
+   				<Pair key="trophy"><String>xmb://localhost/%flash/xmb/category_game.xml#seg_trophy</String></Pair>
+   				<Pair key="facebook_del_acc"><String>xmb://localhost/%flash/xmb/category_psn.xml#seg_cam_facebook_del_acc</String></Pair>
+   				<Pair key="nowmusic"><String>xmb://localhost/%flash/xmb/category_music.xml#seg_now</String></Pair>
+   				<Pair key="playlistpspphoto"><String>xmb://localhost/%flash/xmb/category_photo.xml#seg_playlist_mgmt_psp</String></Pair>
+   				<Pair key="playlistpspmusic"><String>xmb://localhost/%flash/xmb/category_music.xml#seg_playlist_mgmt_psp</String></Pair>
+upload_list.xml :
+   				src="xmb://localhost/%flash/xmb/category_photo.xml#seg_playlist_mgmt"
+   				src="xmb://localhost/%flash/xmb/category_music.xml#seg_playlist_mgmt"
+xmb.txt :
+      				src="xmb://localhost/%flash/xmb/category_photo.xml#seg_playlist_mgmt"
+      				src="xmb://localhost/dev_hdd0/game/XMBMANPLS/USRDIR/game_main.xml#seg_xmb_hdd0_app"
+      				src="xmb://localhost/dev_hdd0/xmlhost/game_plugin/fb.xml#seg_fb"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_psp2appdata"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_gamedata"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_mcutility"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_sdpsp"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_sdps3"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_package_files"
+      				src="xmb://localhost/dev_hdd0/xmlhost/game_plugin/fb.xml#seg_fb"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_psp2appdata"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_gamedata"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_mcutility"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_sdpsp"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_sdps3"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_package_files"
+      				src="xmb://localhost/dev_hdd0/game/XMBMANPLS/USRDIR/game_main.xml#seg_xmb_hdd0_app"
+      				src="xmb://localhost/dev_hdd0/xmlhost/game_plugin/fb.xml#seg_fb"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_gamedata"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_sdps3"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_package_files"
+      				src="xmb://localhost/%flash/xmb/category_game.xml#seg_sdps3"
+      				src="xmb://localhost/%flash/xmb/cfw_settings.xml#seg_cfw_settings"
+      				src="xmb://localhost/%flash/xmb/category_network.xml#seg_manual"
+      				src="xmb://localhost/%flash/xmb/category_network.xml#seg_browser"
+      				src="xmb://localhost/%flash/xmb/category_network.xml#seg_kensaku"
+      				src="xmb://localhost/%flash/xmb/cfw_settings.xml#seg_cfw_settings"
+      				src="xmb://localhost/%flash/xmb/category_network.xml#seg_manual"
+      				src="xmb://localhost/%flash/xmb/category_network.xml#seg_browser"
+      				src="xmb://localhost/%flash/xmb/category_network.xml#seg_kensaku"
+      			<Query class="type:x-xmb/folder-pixmap" key="game"       attr="game" src="xmb://localhost/%flash/xmb/category_sysconf.xml#seg_game" />
+      			<Query class="type:x-xmb/folder-pixmap" key="device"     attr="device" src="xmb://localhost/%flash/xmb/category_sysconf.xml#seg_device"/>
+      w			<Query class="type:x-xmb/folder-pixmap" key="network"    attr="network" src="xmb://localhost/%flash/xmb/category_sysconf.xml#seg_network"/>
+      			<Query class="type:x-xmb/folder-pixmap" key="console_qa" attr="console_qa" src="xmb://localhost/%flash/xmb/category_sysconf.xml#seg_console_qa"/>
+      				src="xmb://localhost/dev_hdd0/xmlhost/game_plugin/fb.xml#seg_fv"
+      				src="xmb://localhost/dev_hdd0/xmlhost/game_plugin/fb.xml#seg_fv"
+      				src="xmb://localhost/%flash/xmb/category_video.xml#seg_bddatamgmt" 
+      				src="xmb://localhost/%flash/xmb/category_music.xml#seg_playlist_mgmt"
+      				src="xmb://localhost/%flash/xmb/category_photo.xml#seg_playlist_mgmt"
+      				<Pair key="bddatacommon"><String>xmb://localhost/%flash/xmb/category_video.xml#seg_bddatacommon</String></Pair>
+      				<Pair key="playlistempty"><String>xmb://localhost/%flash/xmb/category_photo.xml#seg_playlist_empty</String></Pair>
+      				<Pair key="trophy"><String>xmb://localhost/%flash/xmb/category_game.xml#seg_trophy</String></Pair>
+      				<Pair key="facebook_del_acc"><String>xmb://localhost/%flash/xmb/category_psn.xml#seg_cam_facebook_del_acc</String></Pair>
+      				<Pair key="nowmusic"><String>xmb://localhost/%flash/xmb/category_music.xml#seg_now</String></Pair>
+      				<Pair key="playlistpspphoto"><String>xmb://localhost/%flash/xmb/category_photo.xml#seg_playlist_mgmt_psp</String></Pair>
+      				<Pair key="playlistpspmusic"><String>xmb://localhost/%flash/xmb/category_music.xml#seg_playlist_mgmt_psp</String></Pair>
+      				src="xmb://localhost/%flash/xmb/category_photo.xml#seg_playlist_mgmt"
+      				src="xmb://localhost/%flash/xmb/category_music.xml#seg_playlist_mgmt"
