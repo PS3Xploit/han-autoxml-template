@@ -116,6 +116,7 @@ var dummy_value="dummy";
 var actdat='/dev_hdd0/home/%08u/exdata/act.dat';
 var userid='/setting/user/lastLoginUserId';
 var path_db_rebuild="/dev_hdd0/mms/db.err";
+var vsh_whatsnew='http://www.xmbmods.co/whats_new.xml';
 
 var rif_name_len=0x28;
 var idps_len=0x10;
@@ -153,7 +154,7 @@ var explore_category_psn_buf_addr=0x8B200000;
 var explore_pluginrco3_buf_addr=0x8B600000;
 var yourchannels_buf_addr=0x8B000000;
 
-var size_validate_addr=0
+var size_validate_addr=0;
 var ps3xploit_ecdsa_key_addr=0;
 var index_key_addr=0;
 var mount_path_blind_addr=0;
@@ -343,6 +344,7 @@ var fs_mode=0x1B6;
 var stat_size_offset=0x28;
 
 var toc_addr=0;
+var vsh_whatsnew_addr=0;
 var vsh_opd_addr=0;
 var vsh_opd_patch=0;
 var vsh_toc_addr_screenshot=0;
@@ -395,6 +397,8 @@ var progress_msg_frag2='%, please wait...</span></b></h1>';
 
 //DEX 4.81
 var toc_addr_481_d = 0x705610;
+var vsh_whatsnew_addr_481_d=0x019DE9B0;
+var vsh_whatsnew_patch_481_d=0x019DE9B0;
 var vsh_opd_addr_481_d=0x6FBC28;
 var vsh_opd_patch_481_d=0x096E14;
 var vsh_toc_addr_screenshot_481_d=0x730ADC;
@@ -1094,6 +1098,7 @@ function autoreboot()
 function loaddex_481()
 {
 	toc_addr = toc_addr_481_d;
+	vsh_whatsnew_addr=vsh_whatsnew_addr_481_d;
 	vsh_opd_addr=vsh_opd_addr_481_d;
 	vsh_opd_patch=vsh_opd_patch_481_d;
 	vsh_toc_addr_screenshot=vsh_toc_addr_screenshot_481_d;
