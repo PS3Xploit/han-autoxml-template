@@ -1284,6 +1284,18 @@ function copy_file_overwrite(frm,to,fd_frm,fd_to,buf,rlen,wlen,stat,nl,st_size)
 		+syscall_r3r5_p2p(sc_fs_write,fd_to,buf,stat+stat_size_offset,wlen,0,0,0,0,0,0)
 		+syscall_r3_p2p(sc_fs_close,fd_to,0,0,0,0,0,0,0,0,0);
 }
+function copy_file_overwrite_alt(frm,to,fd_frm,fd_to,buf,rlen,wlen,stat,nl,st_size)
+{
+	return memcpy(stat+stat_size_offset,nl,dword_size)
+		+syscall(sc_fs_stat,frm,stat,0,0,0,0,0,0)
+		+memcpy(st_size,stat+stat_size_offset,word_size)
+		+syscall(sc_fs_open,frm,fs_flag_readonly,fd_frm,0,0,0,0,0)
+		+syscall_r3r5_p2p(sc_fs_read,fd_frm,buf,stat+stat_size_offset,rlen,0,0,0,0,0,0)
+		+syscall_r3_p2p(sc_fs_close,fd_frm,0,0,0,0,0,0,0,0,0)
+		+syscall(sc_fs_open,to,fs_flag_create,fd_to,fs_mode,nl,0,0,0)
+		+syscall_r3r5_p2p(sc_fs_write,fd_to,buf,stat+stat_size_offset,wlen,0,0,0,0,0,0)
+		+syscall_r3_p2p(sc_fs_close,fd_to,0,0,0,0,0,0,0,0,0);
+}
 function save_file_overwrite(to,fd,buf,wlen,size,nl)
 {
 	return syscall(sc_fs_open, to, fs_flag_create, fd, fs_mode,nl,0,0,0)
@@ -1320,6 +1332,15 @@ function validate_word_from_ptr(w_ptr,opt_store,val,r29out,r30out,r31out)
 	if(r30out===null){r30out=gtemp_addr;}
 	if(r31out===null){r31out=gtemp_addr;}
 	return load_r3_word_from_ptr_32(w_ptr,gtemp_addr,gtemp_addr,gtemp_addr,gtemp_addr,opt_store,gtemp_addr)
+	+hexdw2bin(gadget_mod12_addr)+fill_by_16bytes(0x70,dbyte00)+fill_by_8bytes(0x8,dbyte00)+hexdw2bin(val)+fill_by_16bytes(0x10,dbyte00)+hexdw2bin(r29out)+hexdw2bin(r30out)+hexdw2bin(r31out)+hexdw2bin(val)+fill_by_8bytes(0x8,dbyte41);
+
+}
+function validate_word_from_ptr_alt(w_ptr,opt_store,val,r29out,r30out,r31out)
+{
+	if(r29out===null){r29out=gtemp_addr;}
+	if(r30out===null){r30out=gtemp_addr;}
+	if(r31out===null){r31out=gtemp_addr;}
+	return load_r3_word_from_ptr_32(w_ptr,gtemp_addr,gtemp_addr,gtemp_addr,gtemp_addr,gtemp_addr,gtemp_addr)
 	+hexdw2bin(gadget_mod12_addr)+fill_by_16bytes(0x70,dbyte00)+fill_by_8bytes(0x8,dbyte00)+hexdw2bin(val)+fill_by_16bytes(0x10,dbyte00)+hexdw2bin(r29out)+hexdw2bin(r30out)+hexdw2bin(r31out)+hexdw2bin(val)+fill_by_8bytes(0x8,dbyte41);
 
 }
