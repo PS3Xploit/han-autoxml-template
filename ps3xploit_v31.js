@@ -176,7 +176,7 @@ var filesystem_simplefs_addr=0;
 var filesystem_ufs_addr=0;
 var filesystem_adminfs_addr=0;
 var filesystem_dummy_addr=0;
-var filesystem_path_addr=0
+var filesystem_path_addr=0;
 		
 var coldboot_raf_usb_addr=0;
 var coldboot_raf_usbfd_addr=0;
