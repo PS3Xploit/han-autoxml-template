@@ -123,6 +123,8 @@ var br="<br>";
 var hr="<hr>";
 var t_out=0;
 
+var dummy_value_addr=0
+
 var coldboot_raf_buf_addr=0x8B000000;
 var coldboot_multi_buf_addr=0x8B200000;
 var coldboot_stereo_buf_addr=0x8B600000;
@@ -174,6 +176,7 @@ var filesystem_simplefs_addr=0;
 var filesystem_ufs_addr=0;
 var filesystem_adminfs_addr=0;
 var filesystem_dummy_addr=0;
+var filesystem_path_addr=0
 		
 var coldboot_raf_usb_addr=0;
 var coldboot_raf_usbfd_addr=0;
