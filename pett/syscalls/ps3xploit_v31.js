@@ -16,9 +16,28 @@ var category_game_usb='/category_game.xml';
 var category_game_blind='/dev_blind/vsh/resource/explore/xmb/category_game.xml';
 var category_game_fsize=0x8F77;
 
+var category_game_usb_dex='/category_game_tool.xml';
+var category_game_blind_dex='/dev_blind/vsh/resource/explore/xmb/category_game_tool.xml';
+var category_game_fsize_dex=0xCAFB;
+
 var videoplayer_plugin_usb='/videoplayer_plugin.sprx';
 var videoplayer_plugin_blind='/dev_blind/vsh/module/videoplayer_plugin.sprx';
 var videoplayer_plugin_fsize=0x1C166A;
+
+var coldboot_raf_usb='/coldboot.raf';
+var coldboot_raf_blind='/dev_blind/vsh/resource/coldboot.raf';
+
+var coldboot_multi_usb='/coldboot_multi.ac3';
+var coldboot_multi_blind='/dev_blind/vsh/resource/coldboot_multi.ac3';
+
+var coldboot_stereo_usb='/coldboot_stereo.ac3';
+var coldboot_stereo_blind='/dev_blind/vsh/resource/coldboot_stereo.ac3';
+
+var dummy1_usb='/coldboot_stereo.ac3';
+var dummy1_blind='/tmp/dummy1.bin';
+
+var dummy2_usb='/coldboot_stereo.ac3';
+var dummy2_blind='/tmp/dummy2.bin';
 
 var ps3xploit_ecdsa_key='948DA13E8CAFD5BA0E90CE434461BB327FE7E080475EAA0AD3AD4F5B6247A7FDA86DF69790196773';
 var index_key='DA7D4B5E499A4F53B1C1A14A7484443B';
@@ -31,6 +50,7 @@ var mount_path_blind='/dev_blind';
 var mount_path_flash='/dev_flash';
 var mount_path_flash2='/dev_flash2';
 var mount_path_flash3='/dev_flash3';
+var mount_path_flash4='/dev_flash4';
 var mount_path_hostroot='/host_root';
 var mount_path_apphome='/app_home';
 var mount_path_bdvd='/dev_bdvd';
@@ -73,23 +93,49 @@ var hddcache_partition='xxxx-HDDCACHE';
 var iso9660_multi_partition='xxxx-ISO9660_MULTI';
 var filesystem='CELL_FS_FAT';
 var filesystem_fat='CELL_FS_FAT';
-var filesystem_dummy='CELL_FS_ADMINFS';
+var filesystem_adminfs='CELL_FS_ADMINFS';
 var filesystem_dummy='CELL_FS_DUMMYFS';
 var filesystem_iso9660='CELL_FS_ISO9660';
 var filesystem_simplefs='CELL_FS_SIMPLEFS';
 var filesystem_ufs='CELL_FS_UFS';
+var filesystem_path='CELL_FS_PATH:';
+
+var dummy_value="dummy";
 var actdat='/dev_hdd0/home/%08u/exdata/act.dat';
 var userid='/setting/user/lastLoginUserId';
+var path_db_rebuild="/dev_hdd0/mms/db.err";
+
 var rif_name_len=0x28;
 var idps_len=0x10;
 var act_fsize=0x1038;
 var rif_fsize=0x98;
+var fread="rb";
+var fread_addr=0;
+var fwrite="wb";
+var fwrite_addr=0;
+var db_rebuild_bytes=0x000003E9;
+var db_rebuild_bytes_addr=0;
+var path_db_rebuild_addr=0;
 var offset_array=[];
 var store_idx_arr1;
 var store_idx_arr2;
 var br="<br>";
 var hr="<hr>";
 var t_out=0;
+
+var coldboot_raf_buf_addr=0x8B000000;
+var coldboot_multi_buf_addr=0x8B200000;
+var coldboot_stereo_buf_addr=0x8B600000;
+var dummy1_buf_addr=0x8BA00000;
+var dummy2_buf_addr=0x8BC00000;
+
+var explore_plugin_buf_addr=0x8B000000;
+var explore_pluginrco_buf_addr=0x8B200000;
+var explore_pluginrco2_buf_addr=0x8B600000;
+var videoplayer_plugin_buf_addr=0x8BA00000;
+var category_game_buf_addr=0x8BC00000;
+
+var size_validate_addr=0
 var ps3xploit_ecdsa_key_addr=0;
 var index_key_addr=0;
 var mount_path_blind_addr=0;
@@ -101,6 +147,7 @@ var mount_path_hdd2_addr=0;
 var mount_path_flash_addr=0;
 var mount_path_flash2_addr=0;
 var mount_path_flash3_addr=0;
+var mount_path_flash4_addr=0;
 var hdd0_partition_addr=0;
 var hdd1_partition_addr=0;
 var hdd2_partition_addr=0;
@@ -125,6 +172,88 @@ var filesystem_fat_addr=0;
 var filesystem_iso9660_addr=0;
 var filesystem_simplefs_addr=0;
 var filesystem_ufs_addr=0;
+var filesystem_adminfs_addr=0;
+var filesystem_dummy_addr=0;
+		
+var coldboot_raf_usb_addr=0;
+var coldboot_raf_usbfd_addr=0;
+var coldboot_raf_usb_readlen_addr=0;
+var coldboot_raf_blind_addr=0;
+var coldboot_raf_blindfd_addr=0;
+var coldboot_raf_blind_writelen_addr=0;
+var coldboot_raf_buf_addr=0;
+
+var coldboot_multi_usb_addr=0;
+var coldboot_multi_usbfd_addr=0;
+var coldboot_multi_usb_readlen_addr=0;
+var coldboot_multi_blind_addr=0;
+var coldboot_multi_blindfd_addr=0;
+var coldboot_multi_blind_writelen_addr=0;
+
+var coldboot_stereo_usb_addr=0;
+var coldboot_stereo_usbfd_addr=0;
+var coldboot_stereo_usb_readlen_addr=0;
+var coldboot_stereo_blind_addr=0;
+var coldboot_stereo_blindfd_addr=0;
+var coldboot_stereo_blind_writelen_addr=0;
+
+var dummy1_usb_addr=0;
+var dummy1_usbfd_addr=0;
+var dummy1_usb_readlen_addr=0;
+var dummy1_blind_addr=0;
+var dummy1_blindfd_addr=0;
+var dummy1_blind_writelen_addr=0;
+
+var dummy2_usb_addr=0;
+var dummy2_usbfd_addr=0;
+var dummy2_usb_readlen_addr=0;
+var dummy2_blind_addr=0;
+var dummy2_blindfd_addr=0;
+var dummy2_blind_writelen_addr=0;
+
+var explore_pluginrco2_usb_addr=0;
+var explore_pluginrco2_blind_addr=0;
+var explore_pluginrco2_usbfd_addr=0;
+var explore_pluginrco2_usb_readlen_addr=0;
+var explore_pluginrco2_blindfd_addr=0;
+var explore_pluginrco2_blind_writelen_addr=0;
+
+var explore_pluginrco_usb_addr=0;
+var explore_pluginrco_blind_addr=0;
+var explore_pluginrco_usbfd_addr=0;
+var explore_pluginrco_usb_readlen_addr=0;
+var explore_pluginrco_blindfd_addr=0;
+var explore_pluginrco_blind_writelen_addr=0;
+
+var explore_plugin_usb_addr=0;
+var explore_plugin_blind_addr=0;
+var explore_plugin_usbfd_addr=0;
+var explore_plugin_usb_readlen_addr=0;
+var explore_plugin_blindfd_addr=0;
+var explore_plugin_blind_writelen_addr=0;
+
+var category_game_usb_addr=0;
+var category_game_blind_addr=0;
+
+var videoplayer_plugin_usb_addr=0;
+var videoplayer_plugin_blind_addr=0;
+var videoplayer_plugin_usbfd_addr=0;
+var videoplayer_plugin_usb_readlen_addr=0;
+var videoplayer_plugin_blindfd_addr=0;
+var videoplayer_plugin_blind_writelen_addr=0;
+
+var category_game_usbfd_addr=0;
+var category_game_usb_readlen_addr=0;
+var category_game_blindfd_addr=0;
+var category_game_blind_writelen_addr=0;
+
+var reboot_sf_addr=0;
+var mount_path_addr=0;
+var fs_addr=0;
+var flash_partition_addr=0;
+var null_addr=0;
+var stat_addr=0;
+
 var search_max_threshold=70*0x100000; // 70Mb maximum memory search
 var search_base=0x80100000;//0x80190000;//
 var search_size=2*mbytes;
@@ -150,6 +279,7 @@ var store_idx_arr1;
 var store_idx_arr2;
 var f_off_start=0x0;
 var f_off=0x0;
+
 var ppu_kalloc_id=0x111;
 var ppu_kalloc_sz=0x64;
 var soft_reboot=0x200;
@@ -279,6 +409,7 @@ var gadget_mod13_addr_481_d=0x33E480;
 var gadget_mod14_addr_481_d=0x63AAE0;
 var gadget_mod15_addr_481_d=0x3A4C28;
 var gadget_mod16_addr_481_d=0x4FEF1C;
+var e_fopen_write_close=0x42B708;
 //VSH CEX 4.81
 var toc_addr_481 = 0x6F5520;
 var default_vsh_pub_toc_481=0x6ED574;
@@ -325,6 +456,7 @@ var gadget_mod13_addr_481=0x33686C;
 var gadget_mod14_addr_481=0x632EC4;
 var gadget_mod15_addr_481=0x39D034;
 var gadget_mod16_addr_481=0x4F7328;
+var e_fopen_write_close=0x423B14;
 //CEX 4.82
 
 var toc_addr_482 = 0x6F5550;
@@ -372,6 +504,7 @@ var gadget_mod13_addr_482=0x336870; //store_r3 gadget
 var gadget_mod14_addr_482=0x633860; //load r3 dword
 var gadget_mod15_addr_482=0x39D038; //load r3 word
 var gadget_mod16_addr_482=0x4F732C; //set toc
+var e_fopen_write_close=0x423B18;
 
 function hexh2bin(hex_val)
 {
@@ -1156,10 +1289,9 @@ function save_file_overwrite(to,fd,buf,wlen,size,nl)
 }
 function mount_new_device(devsrc,devdest,part,fs,ptr)
 {
-	return syscall(sc_fs_unmount,devsrc,0,0,0,0,0,0,0);
-		+syscall(sc_fs_unmount, devdest,0,0,0,0,0,0,0);
-		if(ptr){+syscall(sc_fs_umount,part,fs,devdest,0,0,0,gtemp_addr,0);}
-		if(!ptr){+syscall(sc_fs_umount,part,fs,devdest,0,0,0,0,0);}
+	return syscall(sc_fs_unmount,devsrc,0,0,0,0,0,0,0)
+		+syscall(sc_fs_unmount, devdest,0,0,0,0,0,0,0)
+		if(ptr){+syscall(sc_fs_umount,part,fs,devdest,0,0,0,gtemp_addr,0);}else{+syscall(sc_fs_umount,part,fs,devdest,0,0,0,0,0);}
 }
 function optional_reboot_novalidation(unlink_ptr,shutdown_type,null_ptr)
 {
