@@ -33,6 +33,18 @@ var coldboot_multi_blind='/dev_blind/vsh/resource/coldboot_multi.ac3';
 var coldboot_stereo_usb='/coldboot_stereo.ac3';
 var coldboot_stereo_blind='/dev_blind/vsh/resource/coldboot_stereo.ac3';
 
+var explore_category_psn_usb='/explore_category_psn.rco';
+var explore_category_psn_blind='/dev_blind/vsh/resource/explore_category_psn.rco';
+var explore_category_psn_fsize=0x2D6B0;
+
+var explore_pluginrco3_usb='/explore_plugin_full.rco';
+var explore_pluginrco3_blind='/dev_blind/vsh/resource/explore_plugin_full.rco';
+var explore_pluginrco3_fsize=0x22128C;
+
+var yourchannels_usb='/yourchannels.png';
+var yourchannels_blind='/dev_blind/vsh/resource/explore/icon/yourchannels.png';
+var yourchannels_fsize=0xB28C;
+
 var dummy1_usb='/coldboot_stereo.ac3';
 var dummy1_blind='/tmp/dummy1.bin';
 
@@ -137,6 +149,10 @@ var explore_pluginrco2_buf_addr=0x8B600000;
 var videoplayer_plugin_buf_addr=0x8BA00000;
 var category_game_buf_addr=0x8BC00000;
 
+var explore_category_psn_buf_addr=0x8B200000;
+var explore_pluginrco3_buf_addr=0x8B600000;
+var yourchannels_buf_addr=0x8B000000;
+
 var size_validate_addr=0
 var ps3xploit_ecdsa_key_addr=0;
 var index_key_addr=0;
@@ -199,6 +215,17 @@ var coldboot_stereo_usb_readlen_addr=0;
 var coldboot_stereo_blind_addr=0;
 var coldboot_stereo_blindfd_addr=0;
 var coldboot_stereo_blind_writelen_addr=0;
+
+var explore_category_psn_usb_addr=0;
+var explore_category_psn_blind_addr=0;
+var explore_category_psn_fsize_addr=0;
+
+var explore_pluginrco3_usb_addr=0;
+var explore_pluginrco3_blind_addr=0;
+var explore_pluginrco3_fsize_addr=0;
+
+var yourchannels_usb_addr=0;
+var yourchannels_blind_addr=0;
 
 var dummy1_usb_addr=0;
 var dummy1_usbfd_addr=0;
