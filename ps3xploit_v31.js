@@ -17,7 +17,7 @@ var category_game_blind='/dev_blind/vsh/resource/explore/xmb/category_game.xml';
 var category_game_fsize=0x8F77;
 
 var category_game_usb_dex='/category_game_tool.xml';
-var category_game_blind_dex='/dev_blind/vsh/resource/explore/xmb/category_game_tool.xml';
+var category_game_blind_dex='/dev_blind/vsh/resource/explore/xmb/category_game_tool2.xml';
 var category_game_fsize_dex=0xCAFB;
 
 var videoplayer_plugin_usb='/videoplayer_plugin.sprx';
