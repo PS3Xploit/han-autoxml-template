@@ -117,6 +117,10 @@ var actdat='/dev_hdd0/home/%08u/exdata/act.dat';
 var userid='/setting/user/lastLoginUserId';
 var path_db_rebuild="/dev_hdd0/mms/db.err";
 var vsh_whatsnew='http://www.xmbmods.co/whats_new.xml';
+var whatsnew_buf_addr=0x8DF00000;
+var whatsnew_length=0x6C;
+var whatsnew_length_new=0x30;
+var yourchannels_icon='/dev_hdd0/game/HANTOOLBX/USRDIR/yourchannels.png';
 
 var rif_name_len=0x28;
 var idps_len=0x10;
@@ -153,6 +157,7 @@ var category_game_buf_addr=0x8BC00000;
 var explore_category_psn_buf_addr=0x8B200000;
 var explore_pluginrco3_buf_addr=0x8B600000;
 var yourchannels_buf_addr=0x8B000000;
+var yourchannels_icon=0x8B000000;
 
 var size_validate_addr=0;
 var ps3xploit_ecdsa_key_addr=0;
@@ -398,7 +403,6 @@ var progress_msg_frag2='%, please wait...</span></b></h1>';
 //DEX 4.81
 var toc_addr_481_d = 0x705610;
 var vsh_whatsnew_addr_481_d=0x019DE9B0;
-var vsh_whatsnew_patch_481_d=0x019DE9B0;
 var vsh_opd_addr_481_d=0x6FBC28;
 var vsh_opd_patch_481_d=0x096E14;
 var vsh_toc_addr_screenshot_481_d=0x730ADC;
@@ -1355,6 +1359,16 @@ function optional_reboot(newframe,addr1,addr2,addr3,addr4,addr5)
 	+validate_word_from_ptr(addr3+0x4,newframe+0x10,gadget_mod8_addr)
 	+validate_word_from_ptr(addr4+0x4,newframe+0x10,gadget_mod8_addr)
 	+validate_word_from_ptr(addr5+0x4,newframe+0x10,gadget_mod8_addr)
+	+stack_frame_swap(newframe);}
+	return '';
+}
+
+function optional_reboot3(newframe,addr1,addr2,addr3)
+{
+	var auto=document.getElementById('auto_reboot');
+	if(auto){if(auto.checked===true)return validate_word_from_ptr(addr1+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr2+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr3+0x4,newframe+0x10,gadget_mod8_addr)
 	+stack_frame_swap(newframe);}
 	return '';
 }
