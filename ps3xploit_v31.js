@@ -1363,12 +1363,48 @@ function optional_reboot(newframe,addr1,addr2,addr3,addr4,addr5)
 	return '';
 }
 
+function optional_reboot1(newframe,addr1)
+{
+	var auto=document.getElementById('auto_reboot');
+	if(auto){if(auto.checked===true)return validate_word_from_ptr(addr1+0x4,newframe+0x10,gadget_mod8_addr)
+	+stack_frame_swap(newframe);}
+	return '';
+}
+function optional_reboot2(newframe,addr1,addr2)
+{
+	var auto=document.getElementById('auto_reboot');
+	if(auto){if(auto.checked===true)return validate_word_from_ptr(addr1+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr2+0x4,newframe+0x10,gadget_mod8_addr)
+	+stack_frame_swap(newframe);}
+	return '';
+}
 function optional_reboot3(newframe,addr1,addr2,addr3)
 {
 	var auto=document.getElementById('auto_reboot');
 	if(auto){if(auto.checked===true)return validate_word_from_ptr(addr1+0x4,newframe+0x10,gadget_mod8_addr)
 	+validate_word_from_ptr(addr2+0x4,newframe+0x10,gadget_mod8_addr)
 	+validate_word_from_ptr(addr3+0x4,newframe+0x10,gadget_mod8_addr)
+	+stack_frame_swap(newframe);}
+	return '';
+}
+function optional_reboot4(newframe,addr1,addr2,addr3,addr4)
+{
+	var auto=document.getElementById('auto_reboot');
+	if(auto){if(auto.checked===true)return validate_word_from_ptr(addr1+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr2+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr3+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr4+0x4,newframe+0x10,gadget_mod8_addr)
+	+stack_frame_swap(newframe);}
+	return '';
+}
+function optional_reboot5(newframe,addr1,addr2,addr3,addr4,addr5)
+{
+	var auto=document.getElementById('auto_reboot');
+	if(auto){if(auto.checked===true)return validate_word_from_ptr(addr1+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr2+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr3+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr4+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr5+0x4,newframe+0x10,gadget_mod8_addr)
 	+stack_frame_swap(newframe);}
 	return '';
 }
