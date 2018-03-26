@@ -1112,6 +1112,8 @@ function autoreboot()
 function loaddex_481()
 {
 	toc_addr = toc_addr_481_d;
+	prx_explore_plugin_toc_addr=prx_explore_plugin_toc_addr_481_d;
+	vsh_whatsnew_patch_addr=vsh_whatsnew_patch_addr_481_d;
 	vsh_whatsnew_addr=vsh_whatsnew_addr_481_d;
 	vsh_opd_addr=vsh_opd_addr_481_d;
 	vsh_opd_patch=vsh_opd_patch_481_d;
