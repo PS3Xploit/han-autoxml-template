@@ -410,6 +410,8 @@ var progress_msg_frag2='%, please wait...</span></b></h1>';
 
 //DEX 4.81
 var toc_addr_481_d = 0x705610;
+var prx_explore_plugin_toc_addr_481_d=0x01A0654C;// size 0x30
+var vsh_whatsnew_patch_addr_481_d=0x01A05D28;// explore_plugin
 var vsh_whatsnew_addr_481_d=0x019DE9B0;
 var vsh_opd_addr_481_d=0x6FBC28;
 var vsh_opd_patch_481_d=0x096E14;
