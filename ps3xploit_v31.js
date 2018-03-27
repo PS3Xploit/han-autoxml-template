@@ -49,6 +49,10 @@ var lines_qrc_usb='/lines.qrc';
 var lines_qrc_blind='/dev_blind/vsh/resource/qgl/lines.qrc';
 var lines_qrc_fsize=0x202B0;
 
+var imagefont_usb='/imagefont.bin';
+var imagefont_blind='/dev_blind/vsh/resource/imagefont.bin';
+var imagefont_fsize=0x67857;
+
 var dummy1_usb='/coldboot_stereo.ac3';
 var dummy1_blind='/tmp/dummy1.bin';
 
@@ -166,6 +170,7 @@ var explore_pluginrco3_buf_addr=0x8B600000;
 var yourchannels_buf_addr=0x8B000000;
 var yourchannels_icon=0x8B000000;
 var lines_qrc_buf_addr=0x8B000000;
+var imagefont_buf_addr=0x8B000000;
 
 var size_validate_addr=0;
 var ps3xploit_ecdsa_key_addr=0;
@@ -243,6 +248,9 @@ var yourchannels_blind_addr=0;
 
 var lines_qrc_usb_addr=0;
 var lines_qrc_blind_addr=0;
+
+var imagefont_usb_addr=0;
+var imagefont_blind_addr=0;
 
 var dummy1_usb_addr=0;
 var dummy1_usbfd_addr=0;
