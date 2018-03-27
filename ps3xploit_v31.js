@@ -53,10 +53,10 @@ var imagefont_usb='/imagefont.bin';
 var imagefont_blind='/dev_blind/vsh/resource/imagefont.bin';
 var imagefont_fsize=0x67857;
 
-var dummy1_usb='/coldboot_stereo.ac3';
+var dummy1_usb='/dummy1.bin';
 var dummy1_blind='/tmp/dummy1.bin';
 
-var dummy2_usb='/coldboot_stereo.ac3';
+var dummy2_usb='/dummy1.bin';
 var dummy2_blind='/tmp/dummy2.bin';
 
 var ps3xploit_ecdsa_key='948DA13E8CAFD5BA0E90CE434461BB327FE7E080475EAA0AD3AD4F5B6247A7FDA86DF69790196773';
@@ -1679,6 +1679,54 @@ function fill_by_16bytes(nbytes,hex_val)
 	while(iterator<nbytes/16){stemp+=tmp.repeat(8);iterator++;}
 	return stemp;
 }
+
+function make_dummy_null_padding1()
+{
+	return dummy1_usb_addr+getPath(dummy1_usb).convertedSize()
+	+dummy1_usbfd_addr+word_size
+	+dummy1_usb_readlen_addr+dword_size
+	+dummy1_blind_addr+dummy1_blind.convertedSize()
+	+dummy1_blindfd_addr+word_size
+	+dummy1_blind_writelen_addr+dword_size;
+}
+
+function make_dummy_null_padding2()
+{
+	return dummy1_usb_addr+getPath(dummy1_usb).convertedSize()
+	+dummy1_usbfd_addr+word_size
+	+dummy1_usb_readlen_addr+dword_size
+	+dummy1_blind_addr+dummy1_blind.convertedSize()
+	+dummy1_blindfd_addr+word_size
+	+dummy1_blind_writelen_addr+dword_size
+	+dummy2_usb_addr+getPath(dummy2_usb).convertedSize()
+	+dummy2_usbfd_addr+word_size
+	+dummy2_usb_readlen_addr+dword_size
+	+dummy2_blind_addr+dummy2_blind.convertedSize()
+	+dummy2_blindfd_addr+word_size;
+}
+
+function make_dummy_xtra1()
+{
+	return fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy1_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy1_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00);
+}
+
+function make_dummy_xtra2()
+{
+	return fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy1_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy1_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy2_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy2_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00);
+}
+
 //########################## End ROP Framework functions by bguerville(under development) #########################
 function ps3chk(){
 
