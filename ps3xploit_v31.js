@@ -59,6 +59,17 @@ var dummy1_blind='/tmp/dummy1.bin';
 var dummy2_usb='/dummy1.bin';
 var dummy2_blind='/tmp/dummy2.bin';
 
+// 1 File Template
+var template_1_file_usb='/template_1.bin';
+var template_1_file_blind='/tmp/template_1.bin';
+var template_1_file_buf_addr=0x8B000000;
+var template_1_usb_addr=0;
+var template_1_blind_addr=0;
+var template_1_usb_readlen_addr=0;
+var template_1_blind_addr=0;
+var template_1_blindfd_addr=0;
+var template_1_blind_writelen_addr=0;
+
 var ps3xploit_ecdsa_key='948DA13E8CAFD5BA0E90CE434461BB327FE7E080475EAA0AD3AD4F5B6247A7FDA86DF69790196773';
 var index_key='DA7D4B5E499A4F53B1C1A14A7484443B';
 var f_turnoff='/dev_hdd0/tmp/turnoff';
@@ -238,19 +249,39 @@ var coldboot_stereo_blind_writelen_addr=0;
 var explore_category_psn_usb_addr=0;
 var explore_category_psn_blind_addr=0;
 var explore_category_psn_fsize_addr=0;
+var explore_category_psn_usb_readlen_addr=0;
+var explore_category_psn_blind_addr=0;
+var explore_category_psn_blindfd_addr=0;
+var explore_category_psn_blind_writelen_addr=0;
 
 var explore_pluginrco3_usb_addr=0;
 var explore_pluginrco3_blind_addr=0;
 var explore_pluginrco3_fsize_addr=0;
+var explore_pluginrco3_usb_readlen_addr=0;
+var explore_pluginrco3_blind_addr=0;
+var explore_pluginrco3_blindfd_addr=0;
+var explore_pluginrco3_blind_writelen_addr=0;
 
 var yourchannels_usb_addr=0;
 var yourchannels_blind_addr=0;
+var yourchannels_usb_readlen_addr=0;
+var yourchannels_blind_addr=0;
+var yourchannels_blindfd_addr=0;
+var yourchannels_blind_writelen_addr=0;
 
 var lines_qrc_usb_addr=0;
 var lines_qrc_blind_addr=0;
+var lines_qrc_usb_readlen_addr=0;
+var lines_qrc_blind_addr=0;
+var lines_qrc_blindfd_addr=0;
+var lines_qrc_blind_writelen_addr=0;
 
 var imagefont_usb_addr=0;
 var imagefont_blind_addr=0;
+var imagefont_usb_readlen_addr=0;
+var imagefont_blind_addr=0;
+var imagefont_blindfd_addr=0;
+var imagefont_blind_writelen_addr=0;
 
 var dummy1_usb_addr=0;
 var dummy1_usbfd_addr=0;
