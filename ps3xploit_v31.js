@@ -61,7 +61,7 @@ var dummy2_blind='/tmp/dummy2.bin';
 
 // 1 File Template
 var template_1_file_usb='/template_1.bin';
-var template_1_file_blind='/tmp/template_1.bin';
+var template_1_file_blind='/dev_hdd0/tmp/template_1.bin';
 var template_1_file_buf_addr=0x8B000000;
 var template_1_usb_addr=0;
 var template_1_blind_addr=0;
