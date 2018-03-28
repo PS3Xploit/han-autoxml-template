@@ -927,6 +927,38 @@ function rop_exit_5val(suc,fail,fail1,fail2,fail3,fail4,fail5)
 	}
 	showResult(tmp);
 }
+function rop_exit_4val(suc,fail,fail1,fail2,fail3,fail4)
+{
+	// operations to execute on ROP exit
+	var t_val=xtra_data.substr(store_idx_arr1[0],2).toAscii(true);
+	var t_val2=xtra_data.substr(store_idx_arr1[1],2).toAscii(true);
+	var t_val3=xtra_data.substr(store_idx_arr1[2],2).toAscii(true);
+	var t_val4=xtra_data.substr(store_idx_arr1[3],2).toAscii(true);
+	var t_val6=xtra_data.substr(store_idx_arr2[0],2).toAscii(true);
+	var t_val7=xtra_data.substr(store_idx_arr2[1],2).toAscii(true);
+	var t_val8=xtra_data.substr(store_idx_arr2[2],2).toAscii(true);
+	var t_val9=xtra_data.substr(store_idx_arr2[3],2).toAscii(true);
+	var tmp;
+	
+	if((parseInt(t_val,16)!==0)&&(parseInt(t_val2,16)!==0)&&(parseInt(t_val3,16)!==0)&&(parseInt(t_val4,16)!==0)&&(parseInt(t_val5,16)!==0)&&(parseInt(t_val,16)===(parseInt(t_val6,16)))&&(parseInt(t_val2,16)===(parseInt(t_val7,16)))&&(parseInt(t_val3,16)===(parseInt(t_val8,16)))&&(parseInt(t_val4,16)===(parseInt(t_val9,16))))
+	{
+		var el=document.getElementById('auto_close');
+		if(el)
+		{
+			if(el.checked===true)window.close();
+		}
+		tmp=suc;
+	}
+	else 
+	{
+		if((parseInt(t_val,16)!==parseInt(t_val6,16))||(parseInt(t_val,16)===0))fail+=fail1;
+		if((parseInt(t_val2,16)!==parseInt(t_val7,16))||(parseInt(t_val2,16)===0))fail+=fail2;
+		if((parseInt(t_val3,16)!==parseInt(t_val8,16))||(parseInt(t_val3,16)===0))fail+=fail3;
+		if((parseInt(t_val4,16)!==parseInt(t_val9,16))||(parseInt(t_val4,16)===0))fail+=fail4;
+		tmp=fail;
+	}
+	showResult(tmp);
+}
 function rop_exit_3val(suc,fail,fail1,fail2,fail3)
 {
 	// operations to execute on ROP exit
