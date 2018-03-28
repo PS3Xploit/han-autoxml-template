@@ -56,8 +56,17 @@ var imagefont_fsize=0x67857;
 var dummy1_usb='/dummy1.bin';
 var dummy1_blind='/tmp/dummy1.bin';
 
-var dummy2_usb='/dummy1.bin';
+var dummy2_usb='/dummy2.bin';
 var dummy2_blind='/tmp/dummy2.bin';
+
+var dummy3_usb='/dummy3.bin';
+var dummy3_blind='/tmp/dummy3.bin';
+
+var dummy4_usb='/dummy4.bin';
+var dummy4_blind='/tmp/dummy4.bin';
+
+var dummy5_usb='/dummy5.bin';
+var dummy5_blind='/tmp/dummy5.bin';
 
 // 1 File Template
 var template_1_file_usb='/template_1.bin';
@@ -113,6 +122,11 @@ var template_5_usb_readlen_addr=0;
 var template_5_blind_addr=0;
 var template_5_blindfd_addr=0;
 var template_5_blind_writelen_addr=0;
+
+// Used for offsetting
+var numberOfFiles=0;
+var reboot_sf_ext=0;
+var xtra_data_fill_ext=0;
 
 var ps3xploit_ecdsa_key='948DA13E8CAFD5BA0E90CE434461BB327FE7E080475EAA0AD3AD4F5B6247A7FDA86DF69790196773';
 var index_key='DA7D4B5E499A4F53B1C1A14A7484443B';
@@ -213,6 +227,9 @@ var coldboot_multi_buf_addr=0x8B200000;
 var coldboot_stereo_buf_addr=0x8B600000;
 var dummy1_buf_addr=0x8BA00000;
 var dummy2_buf_addr=0x8BC00000;
+var dummy3_buf_addr=0x8BC00000;
+var dummy4_buf_addr=0x8BC00000;
+var dummy5_buf_addr=0x8BC00000;
 
 var explore_plugin_buf_addr=0x8B000000;
 var explore_pluginrco_buf_addr=0x8B200000;
@@ -340,6 +357,27 @@ var dummy2_usb_readlen_addr=0;
 var dummy2_blind_addr=0;
 var dummy2_blindfd_addr=0;
 var dummy2_blind_writelen_addr=0;
+
+var dummy3_usb_addr=0;
+var dummy3_usbfd_addr=0;
+var dummy3_usb_readlen_addr=0;
+var dummy3_blind_addr=0;
+var dummy3_blindfd_addr=0;
+var dummy3_blind_writelen_addr=0;
+
+var dummy4_usb_addr=0;
+var dummy4_usbfd_addr=0;
+var dummy4_usb_readlen_addr=0;
+var dummy4_blind_addr=0;
+var dummy4_blindfd_addr=0;
+var dummy4_blind_writelen_addr=0;
+
+var dummy5_usb_addr=0;
+var dummy5_usbfd_addr=0;
+var dummy5_usb_readlen_addr=0;
+var dummy5_blind_addr=0;
+var dummy5_blindfd_addr=0;
+var dummy5_blind_writelen_addr=0;
 
 var explore_pluginrco2_usb_addr=0;
 var explore_pluginrco2_blind_addr=0;
@@ -1788,10 +1826,54 @@ function make_dummy_null_padding2()
 	+dummy2_blindfd_addr+word_size;
 }
 
+function make_dummy_null_padding3()
+{
+	return dummy1_usb_addr+getPath(dummy1_usb).convertedSize()
+	+dummy1_usbfd_addr+word_size
+	+dummy1_usb_readlen_addr+dword_size
+	+dummy1_blind_addr+dummy1_blind.convertedSize()
+	+dummy1_blindfd_addr+word_size
+	+dummy1_blind_writelen_addr+dword_size
+	+dummy2_usb_addr+getPath(dummy2_usb).convertedSize()
+	+dummy2_usbfd_addr+word_size
+	+dummy2_usb_readlen_addr+dword_size
+	+dummy2_blind_addr+dummy2_blind.convertedSize()
+	+dummy2_blindfd_addr+word_size
+	+dummy3_usb_addr+getPath(dummy3_usb).convertedSize()
+	+dummy3_usbfd_addr+word_size
+	+dummy3_usb_readlen_addr+dword_size
+	+dummy3_blind_addr+dummy3_blind.convertedSize()
+	+dummy3_blindfd_addr+word_size;
+}
+
+function make_dummy_null_padding4()
+{
+	return dummy1_usb_addr+getPath(dummy1_usb).convertedSize()
+	+dummy1_usbfd_addr+word_size
+	+dummy1_usb_readlen_addr+dword_size
+	+dummy1_blind_addr+dummy1_blind.convertedSize()
+	+dummy1_blindfd_addr+word_size
+	+dummy1_blind_writelen_addr+dword_size
+	+dummy2_usb_addr+getPath(dummy2_usb).convertedSize()
+	+dummy2_usbfd_addr+word_size
+	+dummy2_usb_readlen_addr+dword_size
+	+dummy2_blind_addr+dummy2_blind.convertedSize()
+	+dummy2_blindfd_addr+word_size
+	+dummy3_usb_addr+getPath(dummy3_usb).convertedSize()
+	+dummy3_usbfd_addr+word_size
+	+dummy3_usb_readlen_addr+dword_size
+	+dummy3_blind_addr+dummy3_blind.convertedSize()
+	+dummy3_blindfd_addr+word_size
+	+dummy4_usb_addr+getPath(dummy4_usb).convertedSize()
+	+dummy4_usbfd_addr+word_size
+	+dummy4_usb_readlen_addr+dword_size
+	+dummy4_blind_addr+dummy4_blind.convertedSize()
+	+dummy4_blindfd_addr+word_size;
+}
+
 function make_dummy_xtra1()
 {
-	return fill_by_4bytes(0xC,dbyte00)
-	+getPath(dummy1_usb).convert()
+	return getPath(dummy1_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
 	+dummy1_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00);
@@ -1799,14 +1881,49 @@ function make_dummy_xtra1()
 
 function make_dummy_xtra2()
 {
-	return fill_by_4bytes(0xC,dbyte00)
-	+getPath(dummy1_usb).convert()
+	return getPath(dummy1_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
 	+dummy1_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00)
 	+getPath(dummy2_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
 	+dummy2_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00);
+}
+
+function make_dummy_xtra3()
+{
+	return getPath(dummy1_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy1_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy2_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy2_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy3_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy3_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00);
+}
+
+function make_dummy_xtra5()
+{
+	return getPath(dummy1_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy1_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy2_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy2_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy3_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy3_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy4_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy4_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00);
 }
 
