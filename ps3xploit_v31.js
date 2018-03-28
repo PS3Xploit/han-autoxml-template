@@ -1891,10 +1891,10 @@ function make_dummy_null_padding2()
 function make_dummy_null_padding3()
 {
 	return template_3_file_usb_addr+getPath(template_3_file_usb).convertedSize()
-	+template_3_file_usb_readlen_addr=template_3_file_usbfd_addr+word_size
-	+template_3_file_blind_addr=template_3_file_usb_readlen_addr+dword_size
-	+template_3_file_blindfd_addr=template_3_file_blind_addr+template_3_file_blind.convertedSize()
-	+template_3_file_blind_writelen_addr=template_3_file_blindfd_addr+word_size
+	+template_3_file_usbfd_addr+word_size
+	+template_3_file_usb_readlen_addr+dword_size
+	+template_3_file_blind_addr+template_3_file_blind.convertedSize()
+	+template_3_file_blindfd_addr+word_size
 	+template_4_file_usb_addr+getPath(template_4_file_usb).convertedSize()
 	+template_4_file_usbfd_addr+word_size
 	+template_4_file_usb_readlen_addr+dword_size
@@ -1911,15 +1911,15 @@ function make_dummy_null_padding3()
 function make_dummy_null_padding4()
 {
 	return template_2_file_usb_addr+getPath(template_2_file_usb).convertedSize()
-	+template_2_file_usb_readlen_addr=template_2_file_usbfd_addr+word_size
-	+template_2_file_blind_addr=template_2_file_usb_readlen_addr+dword_size
-	+template_2_file_blindfd_addr=template_2_file_blind_addr+template_2_file_blind.convertedSize()
-	+template_2_file_blind_writelen_addr=template_2_file_blindfd_addr+word_size
+	+template_2_file_usbfd_addr+word_size
+	+template_2_file_usb_readlen_addr+dword_size
+	+template_2_file_blind_addr+template_2_file_blind.convertedSize()
+	+template_2_file_blindfd_addr+word_size
 	+template_3_file_usb_addr+getPath(template_3_file_usb).convertedSize()
-	+template_3_file_usb_readlen_addr=template_3_file_usbfd_addr+word_size
-	+template_3_file_blind_addr=template_3_file_usb_readlen_addr+dword_size
-	+template_3_file_blindfd_addr=template_3_file_blind_addr+template_3_file_blind.convertedSize()
-	+template_3_file_blind_writelen_addr=template_3_file_blindfd_addr+word_size
+	+template_3_file_usbfd_addr+word_size
+	+template_3_file_usb_readlen_addr+dword_size
+	+template_3_file_blind_addr+template_3_file_blind.convertedSize()
+	+template_3_file_blindfd_addr+word_size
 	+template_4_file_usb_addr+getPath(template_4_file_usb).convertedSize()
 	+template_4_file_usbfd_addr+word_size
 	+template_4_file_usb_readlen_addr+dword_size
