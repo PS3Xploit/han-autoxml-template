@@ -70,6 +70,50 @@ var template_1_blind_addr=0;
 var template_1_blindfd_addr=0;
 var template_1_blind_writelen_addr=0;
 
+// 2 File Template
+var template_2_file_usb='/template_2.bin';
+var template_2_file_blind='/dev_hdd0/tmp/template_2.bin';
+var template_2_file_buf_addr=0x8B000000;
+var template_2_usb_addr=0;
+var template_2_blind_addr=0;
+var template_2_usb_readlen_addr=0;
+var template_2_blind_addr=0;
+var template_2_blindfd_addr=0;
+var template_2_blind_writelen_addr=0;
+
+// 3 File Template
+var template_3_file_usb='/template_3.bin';
+var template_3_file_blind='/dev_hdd0/tmp/template_3.bin';
+var template_3_file_buf_addr=0x8B000000;
+var template_3_usb_addr=0;
+var template_3_blind_addr=0;
+var template_3_usb_readlen_addr=0;
+var template_3_blind_addr=0;
+var template_3_blindfd_addr=0;
+var template_3_blind_writelen_addr=0;
+
+// 4 File Template
+var template_4_file_usb='/template_4.bin';
+var template_4_file_blind='/dev_hdd0/tmp/template_4.bin';
+var template_4_file_buf_addr=0x8B000000;
+var template_4_usb_addr=0;
+var template_4_blind_addr=0;
+var template_4_usb_readlen_addr=0;
+var template_4_blind_addr=0;
+var template_4_blindfd_addr=0;
+var template_4_blind_writelen_addr=0;
+
+// 5 File Template
+var template_5_file_usb='/template_5.bin';
+var template_5_file_blind='/dev_hdd0/tmp/template_5.bin';
+var template_5_file_buf_addr=0x8B000000;
+var template_5_usb_addr=0;
+var template_5_blind_addr=0;
+var template_5_usb_readlen_addr=0;
+var template_5_blind_addr=0;
+var template_5_blindfd_addr=0;
+var template_5_blind_writelen_addr=0;
+
 var ps3xploit_ecdsa_key='948DA13E8CAFD5BA0E90CE434461BB327FE7E080475EAA0AD3AD4F5B6247A7FDA86DF69790196773';
 var index_key='DA7D4B5E499A4F53B1C1A14A7484443B';
 var f_turnoff='/dev_hdd0/tmp/turnoff';
@@ -1001,6 +1045,14 @@ function getactPath()
 function getactPathText()
 {
 	return getComboSelectedText(document.getElementById('comboactPath'));
+}
+function getdestFile()
+{
+	return getComboSelectedText(document.getElementById('combodestFile'));
+}
+function getdestPath()
+{
+	return getComboSelectedText(document.getElementById('combodestPath'));
 }
 function getRifValue()
 {
