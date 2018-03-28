@@ -1903,59 +1903,115 @@ function make_dummy_null_padding4()
 	+dummy4_blindfd_addr+word_size;
 }
 
+function fill_1_file()
+{
+	return getPath(template_1_file_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+template_1_file_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00);
+}
+
+function fill_2_files()
+{
+	return getPath(template_1_file_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+template_1_file_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(template_2_file_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+template_2_file_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00);
+}
+
+function fill_3_files()
+{
+	return getPath(template_1_file_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+template_1_file_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(template_2_file_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+template_2_file_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(template_3_file_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+template_3_file_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00);
+}
+
+function fill_4_files()
+{
+	return getPath(template_1_file_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+template_1_file_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(template_2_file_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+template_2_file_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(template_3_file_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+template_3_file_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(template_4_file_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+template_4_file_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00);
+}
+
 function make_dummy_xtra1()
 {
-	return getPath(dummy1_usb).convert()
+	return getPath(template_5_file_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+dummy1_blind.convert()
+	+template_5_file_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00);
 }
 
 function make_dummy_xtra2()
 {
-	return getPath(dummy1_usb).convert()
+	return getPath(template_4_file_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+dummy1_blind.convert()
+	+template_4_file_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(dummy2_usb).convert()
+	+getPath(template_5_file_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+dummy2_blind.convert()
+	+template_5_file_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00);
 }
 
 function make_dummy_xtra3()
 {
-	return getPath(dummy1_usb).convert()
+	return getPath(template_3_file_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+dummy1_blind.convert()
+	+template_3_file_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(dummy2_usb).convert()
+	+getPath(template_4_file_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+dummy2_blind.convert()
+	+template_4_file_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(dummy3_usb).convert()
+	+getPath(template_5_file_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+dummy3_blind.convert()
+	+template_5_file_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00);
 }
 
-function make_dummy_xtra5()
+function make_dummy_xtra4()
 {
-	return getPath(dummy1_usb).convert()
+	return getPath(template_2_file_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+dummy1_blind.convert()
+	+template_2_file_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(dummy2_usb).convert()
+	+getPath(template_3_file_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+dummy2_blind.convert()
+	+template_3_file_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(dummy3_usb).convert()
+	+getPath(template_4_file_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+dummy3_blind.convert()
+	+template_4_file_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(dummy4_usb).convert()
+	+getPath(template_5_file_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+dummy4_blind.convert()
+	+template_5_file_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00);
 }
 
