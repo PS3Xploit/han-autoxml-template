@@ -1,6 +1,41 @@
 
 
-Classe Types
+
+Protocol
+--------------
+
+ese://
+file://
+host://
+sel://
+user://
+xcb://
+xil://
+xmb://
+
+
+
+Examples
+--------------
+
+file://app_home/
+file://localhost/dev_hdd0
+
+host://localhost/q?path=/
+
+user://localhost/query?id=
+
+xcb://localhost/query?cond=+Ae+Ps3SaveData:Common.owner %xUserId
+
+xmb://localhost/%dev_hdd0
+xmb://localhost/dev_hdd0
+xmb://localhost/%flash
+xmb://localhost/flash
+
+
+
+
+Class Types
 --------------
 
 x-ese/dlctl
@@ -12,6 +47,8 @@ x-host/directory
 x-host/file
 x-host/package
 x-host/theme-content
+
+x-sel/registory-accessor
 
 x-xcb/photo
 x-xcb/photo-list
