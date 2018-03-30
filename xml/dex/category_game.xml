@@ -48,6 +48,7 @@
 				key="seg_sdpsp"
 				src="#seg_sdpsp"
 				/>
+
 			<Query
 				class="type:x-xmb/folder-pixmap"
 				key="seg_sdps3"
@@ -58,6 +59,11 @@
 				key="seg_welcome"
 				attr="seg_welcome"
 				src="sel://localhost/welcome?type=game"
+				/>
+			<Query
+				class="type:x-xmb/folder-pixmap"
+				key="seg_gamedebug"
+				src="#seg_gamedebug"
 				/>
 			<Query
 				class="type:x-xmb/folder-pixmap"
@@ -109,6 +115,12 @@
 				 key="han_xmb_addon5"
 				 src="xmb://localhost/dev_hdd0/game/HANXMBA05/USRDIR/han_xmb_addon5.xml#han_xmb_addon5_main"
 				 />
+			<Query				
+				class="type:x-xmb/folder-pixmap"
+				key="xmb_app3" 
+				attr="xmb_app3" 
+				src="xmb://localhost/dev_hdd0/xmlhost/game_plugin/fb.xml#seg_fb"
+				/>
 			<Query
 				class="type:x-xmb/folder-pixmap"
 				key="seg_gameexit"
@@ -691,7 +703,7 @@
 			<Item class="type:x-xmb/xmlwelcome" key="welcome" attr="welcome" />
 		</Items>
 	</View>
-	
+
 	<View id="seg_gamedebug">
 		<Attributes>
 			<Table key="game_debug">
@@ -730,16 +742,13 @@
 			<Query class="type:x-xmb/folder-pixmap" key="host_psn" attr="host_psn" src="#seg_install_files_psn"/>
 			<Query class="type:x-xmb/folder-pixmap" key="hdd0_install" attr="hdd0_install" src="#seg_package_files_install"/>
 			<Query class="type:x-xmb/folder-pixmap" key="hdd0_delete" attr="hdd0_delete" src="#seg_package_files_delete"/>
-			<Query class="type:x-xmb/folder-pixmap" key="pkg_link0" src="xmb://localhost/dev_usb000/package_link.xml#package_link"/>
-			<Query class="type:x-xmb/folder-pixmap" key="pkg_link1" src="xmb://localhost/dev_usb001/package_link.xml#package_link"/>
-			<Query class="type:x-xmb/folder-pixmap" key="pkg_link2" src="xmb://localhost/dev_hdd0/game/PKGLINKER/USRDIR/package_link.xml#package_link_game"/>
 		</Items>
 	</View>
 	
 	<View id="seg_install_files_psn">
 		<Attributes>
 			<Table key="host_psn">
-				<Pair key="icon_rsc"><String>playstation_network_content</String></Pair>
+				<Pair key="icon_rsc"><String>tex_psn_big</String></Pair>
 				<Pair key="title_rsc"><String>msg_tool_psn_file</String></Pair>
 				<Pair key="info_rsc"><String>msg_tool_psn_file_info</String></Pair>
 				<Pair key="str_noitem"><String>msg_tool_no_psn_content</String></Pair>
