@@ -29,8 +29,8 @@ function initROP(init)
 		total_loops++;
 		
 		// Overwrite filename and destination path here
-		template_1_file_usb='/template_1.bin';
-		template_1_file_blind='/dev_blind/template_1.bin';
+		template_1_file_usb='/explore_plugin_full.rco';
+		template_1_file_blind='/dev_blind/vsh/resource/explore_plugin_full.rco';
 		
 		xtra_data=flash_partition.convert()
 		+filesystem.convert()
@@ -140,7 +140,7 @@ function triggerX()
 		clearLogEntry();
 		disable_all();
 		setTimeout(trigger,1000,jump_1_addr);
-		setTimeout(rop_exit_3val,2000,hr+"<h1><b><font color=%22386E38%22>HAN XML Auto Template Installation succeeded!</font></span></b></h1>",hr+"<h1><b><font color='red'>HAN XML Auto Template Installation failed!</font></b></h1><h3><b><span style='color:#000000;'>Error copying file(s):</span></b></h3>","<h3><b><span style='color:#000000;'>template_1.bin</span></b></h3>");
+		setTimeout(rop_exit_3val,2000,hr+"<h1><b><font color=%22386E38%22>HAN XML Auto Template Installation succeeded!</font></span></b></h1>",hr+"<h1><b><font color='red'>HAN XML Auto Template Installation failed!</font></b></h1><h3><b><span style='color:#000000;'>Error copying file(s):</span></b></h3>","<h3><b><span style='color:#000000;'>explore_plugin_full.rco</span></b></h3>");
 		setTimeout(window.close,2000);
 		cleanGUI();
 }
@@ -178,7 +178,7 @@ function make_padding_null()
 	<div id="notshow" style="visibility:hidden">
 		<p><span style="color:#000000">Root Path </span>
 		<select id="combofilePath" name="fPath" size="1" onChange="selectfilePath()">
-		<option id="newpath" selected="selected" value="/dev_usb000">/dev_usb000</option>
+		<option id="newpath" selected="selected" value="/dev_hdd0/game/HANTOOLBX/USRDIR/files">/dev_hdd0/game/HANTOOLBX/USRDIR/files</option>
 		</select> | Auto-Close Browser <input type="checkbox" id="auto_close" name="aclose" onclick="autoclose();"/> | Auto-Reboot <input type="checkbox" id="auto_reboot" name="areboot" checked="checked" onclick="autoreboot();"/>
 		<span id="dex_txt" style="visibility:hidden"> | DEX mode<input type="checkbox" id="dex" name="DEX" disabled="" onclick="dex();"/></span></p>
 		<span id="hideme" style="visibility:hidden"><input type="checkbox" id="auto_reboot" name="areboot" checked="checked" onclick="autoreboot();"/></span>
@@ -190,7 +190,7 @@ function make_padding_null()
 	<div id="footer"></div>
 	<script>
 		ps3chk();
-		//loaddex_481();// uncomment for DEX only to override cex default
+		loaddex_481();// uncomment for DEX only to override cex default
 	</script>
 	</body>
 </html>
