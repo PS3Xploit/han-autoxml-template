@@ -229,10 +229,21 @@ var vsh_whatsnew='http://www.xmbmods.co/whats_new.xml';
 var vsh_whatsnew_patch='http://www.xmbmods.co/whats_new.xml';
 var vsh_whatsnew_patch_addr=0;
 var vsh_whatsnew_patch_addr_source=0;
-var whatsnew_buf_addr=0x01A4F000;//0x8DF00000
+//var whatsnew_buf_addr=0x01A4F000;//CEX
+var whatsnew_buf_addr=0x01B4F000;//DEX
+//var whatsnew_toc_addr=0x01A4F000;//CEX
+var whatsnew_toc_addr=0x01A4F000;//DEX
 var whatsnew_length=0x6C;
 var whatsnew_length_new=0x30;
 var yourchannels_icon='/dev_hdd0/game/HANTOOLBX/USRDIR/yourchannels.png';
+
+var vsh_memory_patch='Hello From Team PS3Xploit';
+var vsh_memory_patch_addr=0;
+var vsh_memory_patch_addr_source=0;
+var vsh_memory_buf_addr=0x01B4F000;//DEX
+var vsh_memory_toc_addr=0x01B4F000;//DEX
+var vsh_memory_length=0x6C;
+var vsh_memory_length_new=0x30;
 
 var rif_name_len=0x28;
 var idps_len=0x10;
