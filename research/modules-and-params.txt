@@ -34,7 +34,12 @@ user://localhost/query?id=
 
 xcb://localhost/query?cond=+Ae+Ps3SaveData:Common.owner %xUserId
 xcb://localhost/query?table=
+xcb://localhost/query?table=%2Fdev_bdvd&cond=Ae+Game:Game.category DP+Ae+Game:Common.fileName HYBRID
+xcb://localhost/query?table=%s&cond=Ae+Video:Common.dirPath %s+Ae+Video:Common.fileName %s
+xcb://localhost/query?table=MMS_MEDIA_TYPE_HDD&cond=Ae+Game:Game.category GD+Ae+Game:Common.fileName
+xcb://localhost/query?table=MMS_MEDIA_TYPE_HDD&cond=An+Game:Game.category GD+An+Game:Game.category 2D+Ae+Game:Game.broken 0+Ae+Game:Game.titleId
 xcb://localhost/query?table=MMS_MEDIA_TYPE_SYSTEM&subclass=x-xcb/storagemedia-generic
+xcb://localhost/query?table=MMS_MEDIA_TYPE_SYSTEM&cond=AGL+StorageMedia:StorageMedia.type %xCB_MEDIA_TYPE_PS3_BD %xCB_MEDIA_TYPE_CDMRW+Oe+StorageMedia:StorageMedia.type %xCB_MEDIA_TYPE_DSD+Ae+StorageMedia:StorageMedia.stat.mediaStatus %xCB_
 xcb://localhost/raw?idlist=
 xcb://localhost/raw?idlist=0x%llx
 
@@ -242,8 +247,28 @@ Paths
 Directory
 Directory:Common.dirPath
 
+Game:Game.attribute
+Game:Game.bootable
+Game:Game.category
+Game:Game.gameDataID
+Game:Game.license
+Game:Game.param1
+Game:Game.param2
+Game:Game.patchFile
+Game:Game.ps3SystemVer
+Game:Game.region
+Game:Game.reserved22
+Game:Game.reserved26
+Game:Game.resolution
+Game:Game.soundFormat
+Game:Game.subTitleId
+Game:Game.title%02d
+Game:Game.version
+Game:Game.xmbApps
+
 Game:Common.dirPath
 Game:Common.title
+Game:Common.titleId
 
 Music:Common.dirPath
 
@@ -294,6 +319,13 @@ expage_wblist
 
 page_create_new
 
+
+
+
+
+Misc
+-----
+/dev_usb000/PS3_TITLE_DATA
 
 
 
