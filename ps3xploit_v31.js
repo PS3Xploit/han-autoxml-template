@@ -533,6 +533,7 @@ var stat_size_offset=0x28;
 
 var toc_addr=0;
 var vsh_whatsnew_addr=0;
+var vsh_memory_addr=0;
 var vsh_opd_addr=0;
 var vsh_opd_patch=0;
 var vsh_toc_addr_screenshot=0;
