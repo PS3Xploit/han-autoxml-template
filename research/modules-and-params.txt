@@ -7,6 +7,7 @@ Protocol
 ese://
 file://
 host://
+sacd://
 sel://
 user://
 xcb://
@@ -26,12 +27,60 @@ host://localhost/q?path=/
 user://localhost/query?id=
 
 xcb://localhost/query?cond=+Ae+Ps3SaveData:Common.owner %xUserId
+xcb://localhost/query?table=
+xcb://localhost/query?table=MMS_MEDIA_TYPE_SYSTEM&subclass=x-xcb/storagemedia-generic
 
 xmb://localhost/%dev_hdd0
 xmb://localhost/dev_hdd0
 xmb://localhost/%flash
 xmb://localhost/flash
 
+
+
+
+
+
+Tables
+---------
+MMS_MEDIA_TYPE_AAD
+MMS_MEDIA_TYPE_AADWM
+MMS_MEDIA_TYPE_BDMRE
+MMS_MEDIA_TYPE_BDMR
+MMS_MEDIA_TYPE_BDMRRR
+MMS_MEDIA_TYPE_BDMRSR
+MMS_MEDIA_TYPE_CDDA
+MMS_MEDIA_TYPE_CDMR
+MMS_MEDIA_TYPE_CDMRW
+MMS_MEDIA_TYPE_DLNA
+MMS_MEDIA_TYPE_DVDMR
+MMS_MEDIA_TYPE_DVDPR
+MMS_MEDIA_TYPE_DVDPRW
+MMS_MEDIA_TYPE_DVDROM
+MMS_MEDIA_TYPE_FLASH
+MMS_MEDIA_TYPE_HDD
+MMS_MEDIA_TYPE_MS_MG
+MMS_MEDIA_TYPE_MS_PRO
+MMS_MEDIA_TYPE_MS_R
+MMS_MEDIA_TYPE_MS_STD
+MMS_MEDIA_TYPE_PLUS
+MMS_MEDIA_TYPE_PS1_CD
+MMS_MEDIA_TYPE_PS1MC
+MMS_MEDIA_TYPE_PS2_CD
+MMS_MEDIA_TYPE_PS2_DVD
+MMS_MEDIA_TYPE_PS3_BD
+MMS_MEDIA_TYPE_PS3_DVD
+MMS_MEDIA_TYPE_SACD
+MMS_MEDIA_TYPE_SYSTEM
+MMS_MEDIA_TYPE_USBMASS
+MMS_MEDIA_TYPE_USBPSP
+
+
+
+Examples
+---------
+MMS_MEDIA_TYPE_ dev_ netshare: /dev_usb %llx_%d %llx /dev_bdvd
+MMS_MEDIA_TYPE_CDDA MusicList Music MusicServed.diskId
+MMS_MEDIA_TYPE_PS2_DVD EX_GAME EX_VIDEO /dev_bdvd/HYBRID
 
 
 
@@ -46,16 +95,57 @@ x-host/unknown
 x-host/directory
 x-host/file
 x-host/package
+x-host/ps2_newsavedata
 x-host/theme-content
 
 x-sel/registory-accessor
 
+x-user/?
+
+x-xcb/achbase
+x-xcb/achievflag
+x-xcb/achievgroup
+x-xcb/achievtitle
+x-xcb/content-disc
+x-xcb/directory-video
+x-xcb/editingvideo
+x-xcb/friendachievflag
+x-xcb/game
+x-xcb/game-debug
+x-xcb/game-list
+x-xcb/message
+x-xcb/music
+x-xcb/music-list
+x-xcb/query-condition
+x-xcb/person
 x-xcb/photo
 x-xcb/photo-list
+x-xcb/storage-media
+x-xcb/savedata-plus
+x-xcb/savedata-ps1
+x-xcb/savedata-ps2
+x-xcb/savedata-psp
+x-xcb/segment
+x-xcb/storagemedia-avchd
+x-xcb/storagemedia-bdc
+x-xcb/storagemedia-dlna
+x-xcb/storagemedia-generic
+x-xcb/storagemedia-psmc
+x-xcb/storagemedia-psv
+x-xcb/storagemedia-sdps2
+x-xcb/storagemedia-sdps3
+x-xcb/storagemedia-sdpsp
+x-xcb/storagemedia-videodiscx
+x-xcb/unknown
+x-xcb/video
+x-xcb/video-disctitle
+x-xcb/video-file
 
-x-xmb/vmc-new
+x-xil/xilitem
+
 x-xmb/folder-pixmap
 x-xmb/unknown
+x-xmb/vmc-new
 x-xmb/xmlbddatamgmt
 x-xmb/xmlchannel
 x-xmb/xmleditingvideo
@@ -75,13 +165,76 @@ x-xmb/xmlnpsignup
 x-xmb/xmlpsp2appdata
 x-xmb/xmlpsp2appdata-cont
 x-xmb/xmlsavedata-plus
+x-xmb/xmlsavedata-ps1 <-??
+x-xmb/xmlsavedata-ps2 <-??
 x-xmb/xmlsavedata-ps3
 x-xmb/xmlsavedata-psp
 x-xmb/xmlscenefolder
+x-xmb/xmlsysconf
 x-xmb/xmltrophy
 x-xmb/xmlvideodownloader
 x-xmb/xmlwebbrowser
 x-xmb/xmlwelcome
+
+
+
+Module Actions
+-----------------
+exec_app
+
+
+
+
+
+DB Types
+-------------
+xCB_DB_TYPE_MEMORY
+
+
+
+
+Device Types
+-------------
+xCB_DEVICE_TYPE_CF
+xCB_DEVICE_TYPE_RESERVED_6
+xCB_DEVICE_TYPE_RESERVED_7
+xCB_DEVICE_TYPE_SD
+xCB_DEVICE_TYPE_USBMASS
+xCB_DEVICE_TYPE_USBWM
+
+
+
+
+List Types
+-------------
+xCB_LIST_TYPE_UNKNOWN
+xCB_LIST_TYPE_VIDEO_USER_DEFINED
+
+
+
+
+Media Types
+--------------
+xCB_MEDIA_FORMAT_DATA
+xCB_MEDIA_INSERTED
+xCB_MEDIA_TYPE_MS_IOX
+xCB_MEDIA_TYPE_PS1_CD
+xCB_MEDIA_TYPE_PS1MC
+xCB_MEDIA_FORMAT_PS2GAME_CD
+xCB_MEDIA_FORMAT_PS2GAME_DVD
+xCB_MEDIA_TYPE_PLUS
+
+
+
+Paths
+-------
+
+Game:Common.title
+Ps1SaveData:Common.dirPath
+Ps1SaveData:Common.size
+Psv:Common.dirPath /dev_MCA
+
+
 
 
 ---------------------------------------------------------------
