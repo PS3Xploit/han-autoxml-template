@@ -24,11 +24,21 @@ file://localhost/dev_hdd0
 
 host://localhost/q?path=/
 
+sel://localhost/fnregist?
+sel://localhost/npaccount?
+sel://localhost/nplogin?
+sel://localhost/nonpaccount?
+sel://localhost/nopremo?
+
 user://localhost/query?id=
 
 xcb://localhost/query?cond=+Ae+Ps3SaveData:Common.owner %xUserId
 xcb://localhost/query?table=
 xcb://localhost/query?table=MMS_MEDIA_TYPE_SYSTEM&subclass=x-xcb/storagemedia-generic
+xcb://localhost/raw?idlist=
+xcb://localhost/raw?idlist=0x%llx
+
+xil://localhost/item?x=%d&y=%u&t=%llx
 
 xmb://localhost/%dev_hdd0
 xmb://localhost/dev_hdd0
@@ -97,6 +107,7 @@ x-host/file
 x-host/package
 x-host/ps2_newsavedata
 x-host/theme-content
+x-host/widget
 
 x-sel/registory-accessor
 
@@ -228,13 +239,77 @@ xCB_MEDIA_TYPE_PLUS
 
 Paths
 -------
+Directory
+Directory:Common.dirPath
 
+Game:Common.dirPath
 Game:Common.title
+
+Music:Common.dirPath
+
+Photo:Common.dirPath
+
 Ps1SaveData:Common.dirPath
 Ps1SaveData:Common.size
+
 Psv:Common.dirPath /dev_MCA
 
+StorageMedia:StorageMedia.autoFocus
+StorageMedia:StorageMedia.audio.channelType
+StorageMedia:StorageMedia.Common.fileName
+StorageMedia:StorageMedia.hybrid
+StorageMedia:StorageMedia.mediaFormat
 
+
+Video:Common.dirPath
+
+
+
+
+
+Other Paths?
+-------------
+FileDelete_Dialog::
+FileDelete_Dialog::cbBtnNewFolderPush
+
+
+
+
+
+Pages
+-------
+expage_
+expage_edit_list
+expage_explore_bg
+expage_explore_fg
+expage_explore_list
+expage_fcopy_plgin
+expage_fdelete_dialog
+expage_filelist
+expage_filelistmsg_error_no_name
+expage_menu
+expage_message_dialog
+expage_select_list
+expage_wblist
+
+page_create_new
+
+
+
+
+
+---------------------------------------------------------------
+explore_plugin
+
+EX_GAME
+ReloadXil
+xEvent
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+mtpinitiator_plugin
+---------------------------------------------------------------
 
 
 ---------------------------------------------------------------
