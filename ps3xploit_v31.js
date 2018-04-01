@@ -227,7 +227,7 @@ var userid='/setting/user/lastLoginUserId';
 var path_db_rebuild="/dev_hdd0/mms/db.err";
 var vsh_whatsnew='http://www.xmbmods.co/whats_new.xml';
 var vsh_whatsnew_patch='http://www.xmbmods.co/whats_new.xml';
-var vsh_whatsnew_patch_addr=0;
+//var vsh_whatsnew_patch_addr=0;
 var vsh_whatsnew_patch_addr_source=0;
 //var whatsnew_buf_addr=0x01A4F000;//CEX
 var whatsnew_buf_addr=0x01B4F000;//DEX
@@ -1214,6 +1214,46 @@ function getdestFile()
 function getdestPath()
 {
 	return getComboSelectedText(document.getElementById('combodestPath'));
+}
+function getComboPatchOffsetText()
+{
+	return getComboSelectedText(document.getElementById('comboPatchOffset'));
+}
+function getPatchOffsetText()
+{
+	return getComboSelectedText(document.getElementById('patchOffset'));
+}
+function getPatchValueText()
+{
+	return getComboSelectedText(document.getElementById('patchValue'));
+}
+function getPatchSizeText()
+{
+	return getComboSelectedText(document.getElementById('patchSize'));
+}
+function getPatchSizeNewText()
+{
+	return getComboSelectedText(document.getElementById('patchSizeNew'));
+}
+function getComboPatchOffsetValue()
+{
+	return getTextBoxValue(document.getElementById('comboPatchOffset'));
+}
+function getPatchOffsetValue()
+{
+	return getTextBoxValue(document.getElementById('patchOffset'));
+}
+function getPatchValueValue()
+{
+	return getTextBoxValue(document.getElementById('patchValue'));
+}
+function getPatchSizeValue()
+{
+	return getTextBoxValue(document.getElementById('patchSize'));
+}
+function getPatchSizeNewValue()
+{
+	return getTextBoxValue(document.getElementById('patchSizeNew'));
 }
 function getRifValue()
 {
