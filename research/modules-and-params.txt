@@ -7,6 +7,7 @@ Protocol
 ese://
 file://
 host://
+now://
 sacd://
 sel://
 user://
@@ -23,6 +24,8 @@ file://app_home/
 file://localhost/dev_hdd0
 
 host://localhost/q?path=/
+
+now://localhost/q?
 
 sel://localhost/fnregist?
 sel://localhost/npaccount?
@@ -194,9 +197,21 @@ x-xmb/xmlwelcome
 
 
 
-Module Actions
+Module Actions??
 -----------------
 exec_app
+exec_line
+exec_mode
+exec_modeno_module_load
+exec_push
+exec_sdps2
+exec_width
+
+COMMAND_EXEC_AUTH_PAGE
+COMMAND_EXEC_PLAY
+COMMAND_EXEC_XMB
+
+INGAME_XMB
 
 
 
@@ -232,13 +247,18 @@ xCB_LIST_TYPE_VIDEO_USER_DEFINED
 Media Types
 --------------
 xCB_MEDIA_FORMAT_DATA
-xCB_MEDIA_INSERTED
-xCB_MEDIA_TYPE_MS_IOX
-xCB_MEDIA_TYPE_PS1_CD
-xCB_MEDIA_TYPE_PS1MC
 xCB_MEDIA_FORMAT_PS2GAME_CD
 xCB_MEDIA_FORMAT_PS2GAME_DVD
+
+xCB_MEDIA_INSERTED
+
+xCB_MEDIA_TYPE_FLASH
+xCB_MEDIA_TYPE_HDD
+xCB_MEDIA_TYPE_MS_IOX
 xCB_MEDIA_TYPE_PLUS
+xCB_MEDIA_TYPE_PS1_CD
+xCB_MEDIA_TYPE_PS1MC
+
 
 
 
@@ -325,6 +345,7 @@ page_create_new
 
 Misc
 -----
+
 /dev_usb000/PS3_TITLE_DATA
 
 
@@ -336,6 +357,16 @@ explore_plugin
 EX_GAME
 ReloadXil
 xEvent
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+videoeditor_plugin
+
+MpVpCommandReceive::execThread
+MpVpCommandReceive::initialize
+
+command_thread <- uses system_plugin??
 ---------------------------------------------------------------
 
 
