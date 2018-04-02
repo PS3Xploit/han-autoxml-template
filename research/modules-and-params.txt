@@ -7,6 +7,7 @@ Protocol
 ese://
 file://
 host://
+netshare://
 now://
 sacd://
 sel://
@@ -345,7 +346,9 @@ page_create_new
 
 Misc
 -----
+webcore_proxy
 
+/dev_bdvd/PS3_GAME/HTMLDIR/
 /dev_usb000/PS3_TITLE_DATA
 
 
