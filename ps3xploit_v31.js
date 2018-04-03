@@ -2015,6 +2015,55 @@ function fill_by_16bytes(nbytes,hex_val)
 	while(iterator<nbytes/16){stemp+=tmp.repeat(8);iterator++;}
 	return stemp;
 }
+
+// Leave For Legacy
+function make_dummy_null_padding1()
+{
+	return dummy1_usb_addr+getPath(dummy1_usb).convertedSize()
+	+dummy1_usbfd_addr+word_size
+	+dummy1_usb_readlen_addr+dword_size
+	+dummy1_blind_addr+dummy1_blind.convertedSize()
+	+dummy1_blindfd_addr+word_size
+	+dummy1_blind_writelen_addr+dword_size;
+}
+
+function make_dummy_null_padding2()
+{
+	return dummy1_usb_addr+getPath(dummy1_usb).convertedSize()
+	+dummy1_usbfd_addr+word_size
+	+dummy1_usb_readlen_addr+dword_size
+	+dummy1_blind_addr+dummy1_blind.convertedSize()
+	+dummy1_blindfd_addr+word_size
+	+dummy1_blind_writelen_addr+dword_size
+	+dummy2_usb_addr+getPath(dummy2_usb).convertedSize()
+	+dummy2_usbfd_addr+word_size
+	+dummy2_usb_readlen_addr+dword_size
+	+dummy2_blind_addr+dummy2_blind.convertedSize()
+	+dummy2_blindfd_addr+word_size;
+}
+
+function make_dummy_xtra1()
+{
+	return fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy1_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy1_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00);
+}
+
+function make_dummy_xtra2()
+{
+	return fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy1_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy1_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy2_usb).convert()
+	+fill_by_4bytes(0xC,dbyte00)
+	+dummy2_blind.convert()
+	+fill_by_4bytes(0xC,dbyte00);
+}
+
 //########################## End ROP Framework functions by bguerville(under development) #########################
 function ps3chk(){
 
