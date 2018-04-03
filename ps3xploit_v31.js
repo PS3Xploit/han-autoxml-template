@@ -1723,6 +1723,18 @@ function optional_reboot_novalidation(unlink_ptr,shutdown_type,null_ptr)
 	return '';
 }
 
+function optional_reboot_new(newframe,addr1,addr2,addr3,addr4,addr5)
+{
+	var auto=document.getElementById('auto_reboot');
+	var t=['','','','',''];
+	if(addr1)t[0]=validate_word_from_ptr(addr1+0x4,newframe+0x10,gadget_mod8_addr);
+	if(addr2)t[1]=validate_word_from_ptr(addr2+0x4,newframe+0x10,gadget_mod8_addr);
+	if(addr3)t[2]=validate_word_from_ptr(addr3+0x4,newframe+0x10,gadget_mod8_addr);
+	if(addr4)t[3]=validate_word_from_ptr(addr4+0x4,newframe+0x10,gadget_mod8_addr);
+	if(addr5)t[4]=validate_word_from_ptr(addr5+0x4,newframe+0x10,gadget_mod8_addr);
+	if(auto){if(auto.checked===true)return t[0]+t[1]+t[2]+t[3]+t[4]+stack_frame_swap(newframe);}
+	return '';
+}
 function optional_reboot(newframe,addr1,addr2,addr3,addr4,addr5)
 {
 	var auto=document.getElementById('auto_reboot');
