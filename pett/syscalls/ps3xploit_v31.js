@@ -227,12 +227,23 @@ var userid='/setting/user/lastLoginUserId';
 var path_db_rebuild="/dev_hdd0/mms/db.err";
 var vsh_whatsnew='http://www.xmbmods.co/whats_new.xml';
 var vsh_whatsnew_patch='http://www.xmbmods.co/whats_new.xml';
-var vsh_whatsnew_patch_addr=0;
+//var vsh_whatsnew_patch_addr=0;
 var vsh_whatsnew_patch_addr_source=0;
-var whatsnew_buf_addr=0x01A4F000;//0x8DF00000
+//var whatsnew_buf_addr=0x01A4F000;//CEX
+var whatsnew_buf_addr=0x01B4F000;//DEX
+//var whatsnew_toc_addr=0x01A4F000;//CEX
+var whatsnew_toc_addr=0x01A4F000;//DEX
 var whatsnew_length=0x6C;
 var whatsnew_length_new=0x30;
 var yourchannels_icon='/dev_hdd0/game/HANTOOLBX/USRDIR/yourchannels.png';
+
+var vsh_memory_patch='Hello From Team PS3Xploit';
+var vsh_memory_patch_addr=0;
+var vsh_memory_patch_addr_source=0;
+var vsh_memory_buf_addr=0x01B4F000;//DEX
+var vsh_memory_toc_addr=0x01B4F000;//DEX
+var vsh_memory_length=0x6C;
+var vsh_memory_length_new=0x30;
 
 var rif_name_len=0x28;
 var idps_len=0x10;
@@ -522,6 +533,7 @@ var stat_size_offset=0x28;
 
 var toc_addr=0;
 var vsh_whatsnew_addr=0;
+var vsh_memory_addr=0;
 var vsh_opd_addr=0;
 var vsh_opd_patch=0;
 var vsh_toc_addr_screenshot=0;
@@ -967,7 +979,58 @@ function trigger(exploit_addr){
 	if(document.getElementById('trigger')){document.getElementById("trigger").innerHTML = -parseFloat("NAN(ffffe" + exploit_addr.toString(16) + ")");}
 	else {throw "trigger div: HTML error!";}
 }
-
+function forceLog(str)
+{
+	var d=true;
+	if(debug===false){d=false;debug=true;}
+	logAdd(str);
+	debug=d;
+}
+function reboot_frame(shutdown_type)
+{
+	return hexdw2bin(sp_exit)+fill_by_8bytes(0x8,dbyte41)+callsub(gadget12_addr,2,0,0,0,0,0,0,0,0,0x80)+syscall(sc_sm_shutdown,shutdown_type,0,0,0,0,0,0,0);
+}
+function init_run(init_param,bs,sz,bs_off,sz_ext)
+{
+	if(init_param===true){frame_fails=0;search_base_off=0;search_size_ext=0;}
+	if(t_out!==0){clearTimeout(t_out);t_out=0;}
+	offset_array=[];
+	disable_all();
+	clearLogEntry();
+	store_idx_arr1=[];
+	store_idx_arr2=[];
+	xtra_data_addr=0;
+	stack_frame_addr=0;
+	jump_2_addr=0;
+	jump_1_addr=0;
+	search_max_threshold=70*0x100000; // 70Mb maximum memory search
+	search_base=bs;//0x80190000;//
+	search_size=sz;
+	search_base_off=bs_off;
+	search_size_ext=sz_ext;
+	total_loops++;
+}
+function init_end(str)
+{
+	var sf=checkMemory(stack_frame_addr-0x4,0x10000,stack_frame.length);
+	var x=checkMemory(xtra_data_addr-0x4,0x2000,xtra_data.length);
+	var j2=checkMemory(jump_2_addr-0x4,0x800,jump_2.length);
+	var j1=checkMemory(jump_1_addr-0x4,0x800,jump_1.length);
+	if((j2===jump_2)&&(j1===jump_1)&&(x===xtra_data)&&(sf===stack_frame))
+	{
+		if(t_out!==0){clearTimeout(t_out);}
+		showResult(str);
+		enable_trigger();
+	}
+	else
+	{
+		if(x!==xtra_data)logAdd("xtra_data mismatch in memory!");
+		if(sf!==stack_frame)logAdd("stack_frame mismatch in memory!");
+		if(j2!==jump_2)logAdd("jump_2 mismatch in memory!");
+		if(j1!==jump_1)logAdd("jump_1 mismatch in memory!");
+		load_check();
+	}
+}
 //####################################################################################################################################################################
 function rop_exit_5val(suc,fail,fail1,fail2,fail3,fail4,fail5)
 {
@@ -1202,6 +1265,46 @@ function getdestFile()
 function getdestPath()
 {
 	return getComboSelectedText(document.getElementById('combodestPath'));
+}
+function getComboPatchOffsetText()
+{
+	return getComboSelectedText(document.getElementById('comboPatchOffset'));
+}
+function getPatchOffsetText()
+{
+	return getComboSelectedText(document.getElementById('patchOffset'));
+}
+function getPatchValueText()
+{
+	return getComboSelectedText(document.getElementById('patchValue'));
+}
+function getPatchSizeText()
+{
+	return getComboSelectedText(document.getElementById('patchSize'));
+}
+function getPatchSizeNewText()
+{
+	return getComboSelectedText(document.getElementById('patchSizeNew'));
+}
+function getComboPatchOffsetValue()
+{
+	return getTextBoxValue(document.getElementById('comboPatchOffset'));
+}
+function getPatchOffsetValue()
+{
+	return getTextBoxValue(document.getElementById('patchOffset'));
+}
+function getPatchValueValue()
+{
+	return getTextBoxValue(document.getElementById('patchValue'));
+}
+function getPatchSizeValue()
+{
+	return getTextBoxValue(document.getElementById('patchSize'));
+}
+function getPatchSizeNewValue()
+{
+	return getTextBoxValue(document.getElementById('patchSizeNew'));
 }
 function getRifValue()
 {
@@ -1573,6 +1676,7 @@ function findJsVariableOffset(name,exploit_data,base,size)
 	logAdd("The string variable named "+name+" could not be located in range 0x"+base.toString(16)+" - 0x"+end_range.toString(16));
 	return 0;
 }
+
 //########################## ROP Framework functions by bguerville(currently under development) #########################
 function copy_file_overwrite(frm,to,fd_frm,fd_to,buf,rlen,wlen,stat,nl,st_size)
 {
@@ -1619,6 +1723,18 @@ function optional_reboot_novalidation(unlink_ptr,shutdown_type,null_ptr)
 	return '';
 }
 
+function optional_reboot_new(newframe,addr1,addr2,addr3,addr4,addr5)
+{
+	var auto=document.getElementById('auto_reboot');
+	var t=['','','','',''];
+	if(addr1)t[0]=validate_word_from_ptr(addr1+0x4,newframe+0x10,gadget_mod8_addr);
+	if(addr2)t[1]=validate_word_from_ptr(addr2+0x4,newframe+0x10,gadget_mod8_addr);
+	if(addr3)t[2]=validate_word_from_ptr(addr3+0x4,newframe+0x10,gadget_mod8_addr);
+	if(addr4)t[3]=validate_word_from_ptr(addr4+0x4,newframe+0x10,gadget_mod8_addr);
+	if(addr5)t[4]=validate_word_from_ptr(addr5+0x4,newframe+0x10,gadget_mod8_addr);
+	if(auto){if(auto.checked===true)return t[0]+t[1]+t[2]+t[3]+t[4]+stack_frame_swap(newframe);}
+	return '';
+}
 function optional_reboot(newframe,addr1,addr2,addr3,addr4,addr5)
 {
 	var auto=document.getElementById('auto_reboot');
@@ -1912,265 +2028,51 @@ function fill_by_16bytes(nbytes,hex_val)
 	return stemp;
 }
 
-function prep_and_set_null_addr(file1,file2,file3,file4,file5)
+// Leave For Legacy
+function make_dummy_null_padding1()
 {
-	if(file1)
-	{
-		template_1_file_usb_addr=mount_path_addr+mount_path.convertedSize();
-		template_1_file_usbfd_addr=template_1_file_usb_addr+getPath(template_1_file_usb).convertedSize();
-		template_1_file_usb_readlen_addr=template_1_file_usbfd_addr+word_size;
-		
-		template_1_file_blind_addr=template_1_file_usb_readlen_addr+dword_size;
-		template_1_file_blindfd_addr=template_1_file_blind_addr+template_1_file_blind.convertedSize();
-		template_1_file_blind_writelen_addr=template_1_file_blindfd_addr+word_size;
-		store_idx_arr1[0]=(template_1_file_blind_writelen_addr-flash_partition_addr+0x8)/2;
-	}
-	if(file2)
-	{
-		template_2_file_usb_addr=template_1_file_blind_writelen_addr+dword_size;
-		template_2_file_usbfd_addr=template_2_file_usb_addr+getPath(template_2_file_usb).convertedSize();
-		template_2_file_usb_readlen_addr=template_2_file_usbfd_addr+word_size;
-		
-		template_2_file_blind_addr=template_2_file_usb_readlen_addr+dword_size;
-		template_2_file_blindfd_addr=template_2_file_blind_addr+template_2_file_blind.convertedSize();
-		template_2_file_blind_writelen_addr=template_2_file_blindfd_addr+word_size;
-		store_idx_arr1[1]=(template_2_file_blind_writelen_addr-flash_partition_addr+0x8)/2;
-	}
-	if(file3)
-	{
-		template_3_file_usb_addr=template_2_file_blind_writelen_addr+dword_size;
-		template_3_file_usbfd_addr=template_3_file_usb_addr+getPath(template_3_file_usb).convertedSize();
-		template_3_file_usb_readlen_addr=template_3_file_usbfd_addr+word_size;
-		
-		template_3_file_blind_addr=template_3_file_usb_readlen_addr+dword_size;
-		template_3_file_blindfd_addr=template_3_file_blind_addr+template_3_file_blind.convertedSize();
-		template_3_file_blind_writelen_addr=template_3_file_blindfd_addr+word_size;
-		store_idx_arr1[2]=(template_3_file_blind_writelen_addr-flash_partition_addr+0x8)/2;
-	}
-	if(file4)
-	{
-		template_4_file_usb_addr=template_3_file_blind_writelen_addr+dword_size;
-		template_4_file_usbfd_addr=template_4_file_usb_addr+getPath(template_4_file_usb).convertedSize();
-		template_4_file_usb_readlen_addr=template_4_file_usbfd_addr+word_size;
-		
-		template_4_file_blind_addr=template_4_file_usb_readlen_addr+dword_size;
-		template_4_file_blindfd_addr=template_4_file_blind_addr+template_4_file_blind.convertedSize();
-		template_4_file_blind_writelen_addr=template_4_file_blindfd_addr+word_size;
-		store_idx_arr1[3]=(template_4_file_blind_writelen_addr-flash_partition_addr+0x8)/2;
-	}
-	if(file5)
-	{
-		template_5_file_usb_addr=template_4_file_blind_writelen_addr+dword_size;
-		template_5_file_usbfd_addr=template_5_file_usb_addr+getPath(template_5_file_usb).convertedSize();
-		template_5_file_usb_readlen_addr=template_5_file_usbfd_addr+word_size;
-	
-		template_5_file_blind_addr=template_5_file_usb_readlen_addr+dword_size;
-		template_5_file_blindfd_addr=template_5_file_blind_addr+template_5_file_blind.convertedSize();
-		template_5_file_blind_writelen_addr=template_5_file_blindfd_addr+word_size;
-		store_idx_arr1[4]=(template_5_file_blind_writelen_addr-flash_partition_addr+0x8)/2;
-	}
+	return dummy1_usb_addr+getPath(dummy1_usb).convertedSize()
+	+dummy1_usbfd_addr+word_size
+	+dummy1_usb_readlen_addr+dword_size
+	+dummy1_blind_addr+dummy1_blind.convertedSize()
+	+dummy1_blindfd_addr+word_size
+	+dummy1_blind_writelen_addr+dword_size;
 }
 
-function get_last_address(file1,file2,file3,file4,file5)
+function make_dummy_null_padding2()
 {
-	if(file1){last_address=template_1_file_blind_writelen_addr}
-	if(file2){last_address=template_2_file_blind_writelen_addr}
-	if(file3){last_address=template_3_file_blind_writelen_addr}
-	if(file4){last_address=template_4_file_blind_writelen_addr}
-	if(file5){last_address=template_5_file_blind_writelen_addr}
-}
-
-function set_files_to_verify(file1,file2,file3,file4,file5)
-{
-	if(file1){store_idx_arr2[0]=(null_addr-flash_partition_addr+0xC)/2;}
-	if(file2){store_idx_arr2[1]=(null_addr-flash_partition_addr+0x10)/2;}
-	if(file3){store_idx_arr2[2]=(null_addr-flash_partition_addr+0x14)/2;}
-	if(file4){store_idx_arr2[3]=(null_addr-flash_partition_addr+0x18)/2;}
-	if(file5){store_idx_arr2[4]=(null_addr-flash_partition_addr+0x1C)/2;}
-	null_addr=last_address+dword_size;
-}
-
-function put_in_stackframe(file1,file2,file3,file4,file5)
-{
-	if(file1)
-	{
-		return copy_file_overwrite(template_1_file_usb_addr,template_1_file_blind_addr,template_1_file_usbfd_addr,template_1_file_blindfd_addr,template_1_file_buf_addr,template_1_file_usb_readlen_addr,template_1_file_blind_writelen_addr,stat_addr,null_addr,null_addr+0x8);
-	}
-	if(file2)
-	{
-		return copy_file_overwrite(template_2_file_usb_addr,template_2_file_blind_addr,template_2_file_usbfd_addr,template_2_file_blindfd_addr,template_2_file_buf_addr,template_2_file_usb_readlen_addr,template_2_file_blind_writelen_addr,stat_addr,null_addr,null_addr+0xC);
-	}
-	if(file3)
-	{
-		return copy_file_overwrite(template_3_file_usb_addr,template_3_file_blind_addr,template_3_file_usbfd_addr,template_3_file_blindfd_addr,template_3_file_buf_addr,template_3_file_usb_readlen_addr,template_3_file_blind_writelen_addr,stat_addr,null_addr,null_addr+0x10);
-	}
-	if(file4)
-	{
-		return copy_file_overwrite(template_4_file_usb_addr,template_4_file_blind_addr,template_4_file_usbfd_addr,template_4_file_blindfd_addr,template_4_file_buf_addr,template_4_file_usb_readlen_addr,template_4_file_blind_writelen_addr,stat_addr,null_addr,null_addr+0x14);
-	}
-	if(file5)
-	{
-		return copy_file_overwrite(template_5_file_usb_addr,template_5_file_blind_addr,template_5_file_usbfd_addr,template_5_file_blindfd_addr,template_5_file_buf_addr,template_5_file_usb_readlen_addr,template_5_file_blind_writelen_addr,stat_addr,null_addr,null_addr+0x18);
-	}
-}
-
-function reboot_verify(file1,file2,file3,file4,file5)
-{
-	if(file1)
-	{
-		return optional_reboot1(reboot_sf_addr,template_1_file_blind_writelen_addr,template_2_file_blind_writelen_addr,template_3_file_blind_writelen_addr);
-	}
-	if(file2)
-	{
-		return optional_reboot2(reboot_sf_addr,template_1_file_blind_writelen_addr,template_2_file_blind_writelen_addr,template_3_file_blind_writelen_addr);
-	}
-	if(file3)
-	{
-		return optional_reboot3(reboot_sf_addr,template_1_file_blind_writelen_addr,template_2_file_blind_writelen_addr,template_3_file_blind_writelen_addr);
-	}
-	if(file4)
-	{
-		return optional_reboot4(reboot_sf_addr,template_1_file_blind_writelen_addr,template_2_file_blind_writelen_addr,template_3_file_blind_writelen_addr,template_4_file_blind_writelen_addr);
-	}
-	if(file5)
-	{
-		return optional_reboot5(reboot_sf_addr,template_1_file_blind_writelen_addr,template_2_file_blind_writelen_addr,template_3_file_blind_writelen_addr,template_4_file_blind_writelen_addr,template_5_file_blind_writelen_addr);
-	}
-}
-
-function fill_1_file()
-{
-	return getPath(template_1_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_1_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00);
-}
-
-function fill_2_files()
-{
-	return getPath(template_1_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_1_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_2_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_2_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00);
-}
-
-function fill_3_files()
-{
-	return getPath(template_1_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_1_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_2_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_2_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_3_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_3_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00);
-}
-
-function fill_4_files()
-{
-	return getPath(template_1_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_1_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_2_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_2_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_3_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_3_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_4_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_4_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00);
-}
-
-function fill_5_files()
-{
-	return getPath(template_1_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_1_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_2_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_2_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_3_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_3_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_4_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_4_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_5_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_5_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
+	return dummy1_usb_addr+getPath(dummy1_usb).convertedSize()
+	+dummy1_usbfd_addr+word_size
+	+dummy1_usb_readlen_addr+dword_size
+	+dummy1_blind_addr+dummy1_blind.convertedSize()
+	+dummy1_blindfd_addr+word_size
+	+dummy1_blind_writelen_addr+dword_size
+	+dummy2_usb_addr+getPath(dummy2_usb).convertedSize()
+	+dummy2_usbfd_addr+word_size
+	+dummy2_usb_readlen_addr+dword_size
+	+dummy2_blind_addr+dummy2_blind.convertedSize()
+	+dummy2_blindfd_addr+word_size;
 }
 
 function make_dummy_xtra1()
 {
-	return getPath(template_5_file_usb).convert()
+	return fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy1_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+template_5_file_blind.convert()
+	+dummy1_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00);
 }
 
 function make_dummy_xtra2()
 {
-	return getPath(template_4_file_usb).convert()
+	return fill_by_4bytes(0xC,dbyte00)
+	+getPath(dummy1_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+template_4_file_blind.convert()
+	+dummy1_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_5_file_usb).convert()
+	+getPath(dummy2_usb).convert()
 	+fill_by_4bytes(0xC,dbyte00)
-	+template_5_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00);
-}
-
-function make_dummy_xtra3()
-{
-	return getPath(template_3_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_3_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_4_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_4_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_5_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_5_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00);
-}
-
-function make_dummy_xtra4()
-{
-	return getPath(template_2_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_2_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_3_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_3_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_4_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_4_file_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(template_5_file_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+template_5_file_blind.convert()
+	+dummy2_blind.convert()
 	+fill_by_4bytes(0xC,dbyte00);
 }
 
