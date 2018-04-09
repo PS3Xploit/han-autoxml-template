@@ -247,6 +247,7 @@ var flash_partition1='xxxxCELL_FS_IOS:BUILTIN_FLSH1';
 var flash_partition2='xxxxCELL_FS_IOS:BUILTIN_FLSH2';
 var flash_partition3='xxxxCELL_FS_IOS:BUILTIN_FLSH3';
 var flash_partition4='xxxxCELL_FS_IOS:BUILTIN_FLSH4';
+var flash_partition_flash='xxxxCELL_FS_IOS:BUILTIN_FLASH';
 var hdd0_partition='xxxxCELL_FS_UTILITY:HDD0';
 var hdd1_partition='xxxxCELL_FS_UTILITY:HDD1';
 var hdd2_partition='xxxxCELL_FS_UTILITY:HDD2';
@@ -2375,6 +2376,7 @@ function ps3chk(){
 	}
 }
 
+// LEGACY
 // Used for each initROP call
 function initDefaults()
 {
