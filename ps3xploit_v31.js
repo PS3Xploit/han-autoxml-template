@@ -1719,9 +1719,19 @@ function loadcex_482()
 }
 function dex()
 {
+	if(fwCompat=="4.81")
+	{
 		if(document.getElementById('dex').checked===true){loaddex_481();}//alert("calling loaddex_481");
 		else {loadcex_481();}
 		disable_trigger();
+	}
+		
+	if(fwCompat=="4.82")
+	{
+		if(document.getElementById('dex').checked===true){loaddex_482();}//alert("calling loaddex_482");
+		else {loadcex_482();}
+		disable_trigger();
+	}
 }
 function initDEX()
 {
@@ -1891,6 +1901,22 @@ function optional_reboot5(newframe,addr1,addr2,addr3,addr4,addr5)
 	+validate_word_from_ptr(addr3+0x4,newframe+0x10,gadget_mod8_addr)
 	+validate_word_from_ptr(addr4+0x4,newframe+0x10,gadget_mod8_addr)
 	+validate_word_from_ptr(addr5+0x4,newframe+0x10,gadget_mod8_addr)
+	+stack_frame_swap(newframe);}
+	return '';
+}
+function optional_reboot10(newframe,addr1,addr2,addr3,addr4,addr5,addr6,addr7,addr8,addr9,addr10)
+{
+	var auto=document.getElementById('auto_reboot');
+	if(auto){if(auto.checked===true)return validate_word_from_ptr(addr1+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr2+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr3+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr4+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr5+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr6+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr7+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr8+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr9+0x4,newframe+0x10,gadget_mod8_addr)
+	+validate_word_from_ptr(addr10+0x4,newframe+0x10,gadget_mod8_addr)
 	+stack_frame_swap(newframe);}
 	return '';
 }
@@ -2182,6 +2208,7 @@ function make_dummy_xtra2()
 function ps3chk(){
 
 	var recovery_warning="WARNING!\n\nThis has the potential to corrupt your system and require you to install OFW (Original Firmware) if not used correctly!\n\nUSE AT YOUR OWN RISK!";
+	var psn_signin_prompt="You MUST Sign-In To PSN Before Running This Tool!\n\nThis Will Mount HDD1 and Allow File Transfer.";
 	var fwCompat = ["4.00","4.10","4.11","4.20","4.21","4.25","4.30","4.31","4.40","4.41","4.45","4.46","4.50","4.53","4.55","4.60","4.65","4.66","4.70","4.75","4.76","4.78","4.80","4.81","4.82"];
 	var ua = navigator.userAgent;
 	var uaStringCheck = ua.substring(ua.indexOf("5.0 (") + 5, ua.indexOf(") Apple") - 7);
