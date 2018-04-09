@@ -155,6 +155,61 @@ var template_5_blind_addr=0;
 var template_5_blindfd_addr=0;
 var template_5_blind_writelen_addr=0;
 
+// 6 File Template
+var template_6_file_usb='/template_6.bin';
+var template_6_file_blind='/dev_hdd0/tmp/template_6.bin';
+var template_6_file_buf_addr=0x8B000000;
+var template_6_file_usb_addr=0;
+var template_6_file_usbfd_addr=0;
+var template_6_file_usb_readlen_addr=0;
+var template_6_file_blind_addr=0;
+var template_6_file_blindfd_addr=0;
+var template_6_file_blind_writelen_addr=0;
+
+// 7 File Template
+var template_7_file_usb='/template_7.bin';
+var template_7_file_blind='/dev_hdd0/tmp/template_7.bin';
+var template_7_file_buf_addr=0x8B000000;
+var template_7_file_usb_addr=0;
+var template_7_file_usbfd_addr=0;
+var template_7_file_usb_readlen_addr=0;
+var template_7_file_blind_addr=0;
+var template_7_file_blindfd_addr=0;
+var template_7_file_blind_writelen_addr=0;
+
+// 8 File Template
+var template_8_file_usb='/template_8.bin';
+var template_8_file_blind='/dev_hdd0/tmp/template_8.bin';
+var template_8_file_buf_addr=0x8B000000;
+var template_8_file_usb_addr=0;
+var template_8_file_usbfd_addr=0;
+var template_8_file_usb_readlen_addr=0;
+var template_8_file_blind_addr=0;
+var template_8_file_blindfd_addr=0;
+var template_8_file_blind_writelen_addr=0;
+
+// 9 File Template
+var template_9_file_usb='/template_9.bin';
+var template_9_file_blind='/dev_hdd0/tmp/template_9.bin';
+var template_9_file_buf_addr=0x8B000000;
+var template_9_file_usb_addr=0;
+var template_9_file_usbfd_addr=0;
+var template_9_file_usb_readlen_addr=0;
+var template_9_file_blind_addr=0;
+var template_9_file_blindfd_addr=0;
+var template_9_file_blind_writelen_addr=0;
+
+// 10 File Template
+var template_10_file_usb='/template_10.bin';
+var template_10_file_blind='/dev_hdd0/tmp/template_10.bin';
+var template_10_file_buf_addr=0x8B000000;
+var template_10_file_usb_addr=0;
+var template_10_file_usbfd_addr=0;
+var template_10_file_usb_readlen_addr=0;
+var template_10_file_blind_addr=0;
+var template_10_file_blindfd_addr=0;
+var template_10_file_blind_writelen_addr=0;
+
 // Used for offsetting
 var numberOfFiles=0;
 var reboot_sf_ext=0;
