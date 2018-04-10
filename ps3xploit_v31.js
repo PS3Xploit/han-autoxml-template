@@ -1849,14 +1849,14 @@ function loadcex_482()
 }
 function dex()
 {
-	if(fwVersion=="4.81")
+	if(fwVersionDefault=="4.81")
 	{
 		if(document.getElementById('dex').checked===true){loaddex_481();}//alert("calling loaddex_481");
 		else {loadcex_481();}
 		disable_trigger();
 	}
 		
-	if(fwVersion=="4.82")
+	if(fwVersionDefault=="4.82")
 	{
 		if(document.getElementById('dex').checked===true){loaddex_482();}//alert("calling loaddex_482");
 		else {loadcex_482();}
@@ -2343,11 +2343,13 @@ function ps3chk(){
 	var ua = navigator.userAgent;
 	var uaStringCheck = ua.substring(ua.indexOf("5.0 (") + 5, ua.indexOf(") Apple") - 7);
 	var fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
+	var fwVersionDefault="";
 	var msgCongrats = "Congratulations! We've detected your PlayStation 3 is running FW " + fwVersion + ", which is compatible with PS3Xploit! Enjoy!";
 	switch (uaStringCheck) {
 		case "PLAYSTATION":
 			switch (fwVersion) {
 				case fwCompat[23]:
+					fwVersionDefault="4.81";
 					//alert(msgCongrats);
 					//initDEX();
 					loadcex_481();
@@ -2355,6 +2357,7 @@ function ps3chk(){
 					break;
 					
 				case fwCompat[24]:
+					fwVersionDefault="4.82";
 					//alert(msgCongrats);
 					loadcex_482();
 					//loaddex_482();
