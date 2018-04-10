@@ -1849,14 +1849,14 @@ function loadcex_482()
 }
 function dex()
 {
-	if(fwCompat=="4.81")
+	if(fwVersion=="4.81")
 	{
 		if(document.getElementById('dex').checked===true){loaddex_481();}//alert("calling loaddex_481");
 		else {loadcex_481();}
 		disable_trigger();
 	}
 		
-	if(fwCompat=="4.82")
+	if(fwVersion=="4.82")
 	{
 		if(document.getElementById('dex').checked===true){loaddex_482();}//alert("calling loaddex_482");
 		else {loadcex_482();}
