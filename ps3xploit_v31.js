@@ -2360,16 +2360,16 @@ function ps3chk(){
 					//alert(msgCongrats);
 					//alert(recovery_warning);
 					//alert(psn_block_access);
-					loadcex_481();
 					initDEX();
+					loadcex_481();
 					break;
 					
 				case fwCompat[24]:
 					//alert(msgCongrats);
 					//alert(recovery_warning);
 					//alert(psn_block_access);
-					loadcex_482();
 					initDEX();
+					loadcex_482();
 					break;
 					
 				default:
