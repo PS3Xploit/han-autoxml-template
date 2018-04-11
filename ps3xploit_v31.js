@@ -1854,18 +1854,21 @@ function loadcex_482()
 }
 function dex()
 {
-	if(fwVersion=="4.81")
-	{
-		if(document.getElementById('dex').checked===true){loaddex_481();}//alert("calling loaddex_481");
-		else {loadcex_481();}
-		disable_trigger();
-	}
-		
-	if(fwVersion=="4.82")
-	{
-		if(document.getElementById('dex').checked===true){loaddex_482();}//alert("calling loaddex_482");
-		else {loadcex_482();}
-		disable_trigger();
+	switch (fwVersion) {
+		case "4.81":
+			if(document.getElementById('dex').checked===true){loaddex_481();}//alert("calling loaddex_481");
+			else {loadcex_481();}
+			disable_trigger();
+			break;
+			
+		case "4.82":
+			if(document.getElementById('dex').checked===true){loaddex_482();}//alert("calling loaddex_482");
+			else {loadcex_482();}
+			disable_trigger();
+			break;
+			
+		default:
+			break;
 	}
 }
 function initDEX()
@@ -2354,27 +2357,19 @@ function ps3chk(){
 		case "PLAYSTATION":
 			switch (fwVersion) {
 				case fwCompat[23]:
-					//alert("useDex: "+useDex);
 					//alert(msgCongrats);
 					//alert(recovery_warning);
 					//alert(psn_block_access);
-					//initDEX();
 					loadcex_481();
-					//loaddex_481();
-					//if(!useDEX){loadcex_481();}
-					//if(useDEX){loaddex_481();}
+					initDEX();
 					break;
 					
 				case fwCompat[24]:
-					//alert("useDex: "+useDex);
 					//alert(msgCongrats);
 					//alert(recovery_warning);
 					//alert(psn_block_access);
-					//initDEX();
 					loadcex_482();
-					//loaddex_482();
-					//if(!useDEX){loadcex_482();}
-					//if(useDEX){loaddex_482();}
+					initDEX();
 					break;
 					
 				default:
