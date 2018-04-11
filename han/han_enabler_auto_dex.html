@@ -116,16 +116,15 @@ function triggerX()
 	<body id="bodyId" style="background-color:#FFFFFF" onload="initROP(true);">
 	<div id="headerId">
 	<h1>Enabling HAN....</h1>
-	<span id="hideme" style="visibility:hidden"><input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/></span>
+	<span id="hideme" style="visibility:hidden"><input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/><input type="checkbox" id="dex" name="DEX" disabled="" checked="checked"/></span>
 	<div id="result"></div>
 	<div id="log"></div>
 	<div id="exploit" ></div>
 	<div id="trigger"></div>
 	<div id="footer"></div>
 	<script>
+		var useDex=true;
 		ps3chk();
-		if(fwVersion=="4.81"){loaddex_481();}
-		if(fwVersion=="4.82"){loaddex_482();}
 	</script>
 	</body>
 </html>

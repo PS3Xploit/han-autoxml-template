@@ -1,5 +1,7 @@
 var debug=false;
 
+var useDEX=false;
+
 var ua = navigator.userAgent;
 var fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
 
@@ -2352,19 +2354,27 @@ function ps3chk(){
 		case "PLAYSTATION":
 			switch (fwVersion) {
 				case fwCompat[23]:
+					//alert("useDex: "+useDex);
+					//alert(msgCongrats);
 					//alert(recovery_warning);
 					//alert(psn_block_access);
-					initDEX();
+					//initDEX();
 					loadcex_481();
 					//loaddex_481();
+					//if(!useDEX){loadcex_481();}
+					if(useDEX){loaddex_481();}
 					break;
 					
 				case fwCompat[24]:
+					//alert("useDex: "+useDex);
+					//alert(msgCongrats);
 					//alert(recovery_warning);
 					//alert(psn_block_access);
-					initDEX();
+					//initDEX();
 					loadcex_482();
 					//loaddex_482();
+					//if(!useDEX){loadcex_482();}
+					if(useDEX){loaddex_482();}
 					break;
 					
 				default:
