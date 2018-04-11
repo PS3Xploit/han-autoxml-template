@@ -2362,7 +2362,7 @@ function ps3chk(){
 					loadcex_481();
 					//loaddex_481();
 					//if(!useDEX){loadcex_481();}
-					if(useDEX){loaddex_481();}
+					//if(useDEX){loaddex_481();}
 					break;
 					
 				case fwCompat[24]:
@@ -2374,7 +2374,7 @@ function ps3chk(){
 					loadcex_482();
 					//loaddex_482();
 					//if(!useDEX){loadcex_482();}
-					if(useDEX){loaddex_482();}
+					//if(useDEX){loaddex_482();}
 					break;
 					
 				default:
