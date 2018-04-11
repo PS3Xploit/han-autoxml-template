@@ -2342,26 +2342,27 @@ function ps3chk(){
 
 	var recovery_warning="WARNING!\n\nThis has the potential to corrupt your system and require you to install OFW (Original Firmware) if not used correctly!\n\nUSE AT YOUR OWN RISK!";
 	var psn_signin_prompt="You MUST Sign-In To PSN Before Running This Tool!\n\nThis Will Mount HDD1 and Allow File Transfer.";
+	var psn_block_access="DO NOT TRY SIGNING INTO PSN WHILE DEX ENABLED!\n\nYOU CAN/WILL GET BANNED!\n\nCHANGE YOUR NP ENVIRONMENT to invalid or anything else and reboot to block PSN access.";
 	var fwCompat = ["4.00","4.10","4.11","4.20","4.21","4.25","4.30","4.31","4.40","4.41","4.45","4.46","4.50","4.53","4.55","4.60","4.65","4.66","4.70","4.75","4.76","4.78","4.80","4.81","4.82"];
 	var ua = navigator.userAgent;
 	var uaStringCheck = ua.substring(ua.indexOf("5.0 (") + 5, ua.indexOf(") Apple") - 7);
 	var fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
-	var fwVersionDefault="";
 	var msgCongrats = "Congratulations! We've detected your PlayStation 3 is running FW " + fwVersion + ", which is compatible with PS3Xploit! Enjoy!";
 	switch (uaStringCheck) {
 		case "PLAYSTATION":
 			switch (fwVersion) {
 				case fwCompat[23]:
-					fwVersionDefault="4.81";
-					//alert(msgCongrats);
-					//initDEX();
+					//alert(recovery_warning);
+					//alert(psn_block_access);
+					initDEX();
 					loadcex_481();
 					//loaddex_481();
 					break;
 					
 				case fwCompat[24]:
-					fwVersionDefault="4.82";
-					//alert(msgCongrats);
+					//alert(recovery_warning);
+					//alert(psn_block_access);
+					initDEX();
 					loadcex_482();
 					//loaddex_482();
 					break;
