@@ -116,8 +116,13 @@ function triggerX()
 	<body id="bodyId" style="background-color:#FFFFFF" onload="initROP(true);">
 	<div id="headerId">
 	<h1>Enabling HAN For CEX...</h1>
-	<span id="hideme" style="visibility:hidden"><button id="btnROP" type="button" onclick="initROP(true);" autofocus></button><input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/><input type="checkbox" id="dex" name="DEX" disabled="" onclick="dex();"/>
-	<button id="btnTrigger" disabled="" type="button" onclick="triggerX();"></button><button id="btnReset" type="button" onclick="disable_trigger();"></button></span>
+	<span id="hideme" style="visibility:hidden">
+	<button id="btnROP" type="button" onclick="initROP(true);" autofocus></button>
+	<input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/>
+	<input type="checkbox" id="auto_reboot" name="areboot" onclick="autoreboot();"/>
+	<input type="checkbox" id="dex" name="DEX" disabled="" onclick="dex();"/>
+	<button id="btnTrigger" disabled="" type="button" onclick="triggerX();"></button><button id="btnReset" type="button" onclick="disable_trigger();"></button>
+	</span>
 	<div id="result"></div>
 	<div id="log"></div>
 	<div id="exploit" ></div>
