@@ -1875,7 +1875,7 @@ function initDEX()
 {
 	if((document.getElementById('dex'))&&(document.getElementById('dex_txt')))
 	{
-		setVisible(document.getElementById('dex_txt'));
+		//setVisible(document.getElementById('dex_txt'));
 		enable_element(document.getElementById('dex'));
 	}
 	else {throw "dex checkbox/dex span: HTML error";}
