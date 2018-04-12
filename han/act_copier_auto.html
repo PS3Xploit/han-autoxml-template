@@ -154,11 +154,12 @@ function triggerX()
 </head>
 	<body id="bodyId" style="background-color:#FFFFFF" onload="initROP(true);">
 	<div id="headerId">
-	<h1>Dumping ACT.DAT and IDPS.HEX....</h1>
+	<h1>Dumping ACT.DAT and IDPS.HEX For CEX...</h1>
 	<span id="hideme" style="visibility:hidden"><select id="comboactPath" name="actPath" size="1" onChange="selectfilePath()"/></span>
 	<span id="hideme" style="visibility:hidden"><option id="path_0" selected="selected" value="xxxx/dev_usb000/act.dat">/dev_usb000</option></span>
 	<span id="hideme" style="visibility:hidden"><input type="text" name="rif_file" id="txtrif" size="40" value="XXXXXX-XXXXXXXXX_XX-XXXXXXXXXXXXXXXX.rif"/></span>
-	<span id="hideme" style="visibility:hidden"><input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/></span>
+	<span id="hideme" style="visibility:hidden"><p><button id="btnROP" type="button" onclick="initROP(true);" autofocus></button><input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/><span id="dex_txt" style="visibility:hidden"><input type="checkbox" id="dex" name="DEX" disabled="" onclick="dex();"/></span></p>
+	<p><button id="btnTrigger" disabled="" type="button" onclick="triggerX();"></button><span id="reset" style="visibility:hidden"><button id="btnReset" type="button" onclick="disable_trigger();"></button></span></p></span>
 	<div id="result"></div>
 	<div id="log"></div>
 	<div id="exploit" ></div>
