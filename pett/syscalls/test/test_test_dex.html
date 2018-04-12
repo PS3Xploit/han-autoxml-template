@@ -106,14 +106,8 @@ function triggerX()
 	<body id="bodyId" style="background-color:#FFFFFF" onload="initROP(true);">
 	<div id="headerId">
 	<h1>PS3Xploit Running In DEX Mode...</h1>
-	<div id="notshow" style="visibility:hidden">
-		<p><span style="color:#000000">Root Path </span>
-		<select id="combofilePath" name="fPath" size="1" onChange="selectfilePath()">
-		<option id="newpath" selected="selected" value="/dev_usb000">/dev_usb000</option>
-		</select>
-	<span id="hideme" style="visibility:hidden"><p><button id="btnROP" type="button" onclick="initROP(true);" autofocus></button><input type="checkbox" id="auto_reboot" name="areboot" checked="checked" onclick="autoreboot();"/><span id="dex_txt" style="visibility:hidden"><input type="checkbox" id="dex" name="DEX" checked="checked" disabled="" onclick="dex();"/></span></p>
+	<span id="hideme" style="visibility:hidden"><p><button id="btnROP" type="button" onclick="initROP(true);" autofocus></button><input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/><span id="dex_txt" style="visibility:hidden"><input type="checkbox" id="dex" name="DEX" checked="checked" disabled="" onclick="dex();"/></span></p>
 	<p><button id="btnTrigger" disabled="" type="button" onclick="triggerX();"></button><span id="reset" style="visibility:hidden"><button id="btnReset" type="button" onclick="disable_trigger();"></button></span></p></span>
-	</div>
 	<div id="result"></div>
 	<div id="log"></div>
 	<div id="exploit" ></div>
