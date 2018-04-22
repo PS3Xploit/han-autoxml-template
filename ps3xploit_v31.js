@@ -253,6 +253,7 @@ var flash_partition2='xxxxCELL_FS_IOS:BUILTIN_FLSH2';
 var flash_partition3='xxxxCELL_FS_IOS:BUILTIN_FLSH3';
 var flash_partition4='xxxxCELL_FS_IOS:BUILTIN_FLSH4';
 var flash_partition_flash='xxxxCELL_FS_IOS:BUILTIN_FLASH';
+var hdd_ata_partition='xxxxCELL_FS_IOS:ATA_HDD';
 var hdd0_partition='xxxxCELL_FS_UTILITY:HDD0';
 var hdd1_partition='xxxxCELL_FS_UTILITY:HDD1';
 var hdd2_partition='xxxxCELL_FS_UTILITY:HDD2';
@@ -279,6 +280,8 @@ var filesystem_adminfs='CELL_FS_ADMINFS';
 var filesystem_dummy='CELL_FS_DUMMYFS';
 var filesystem_iso9660='CELL_FS_ISO9660';
 var filesystem_simplefs='CELL_FS_SIMPLEFS';
+var filesystem_cfs='CELL_FS_CFS';
+var filesystem_udf='CELL_FS_UDF';
 var filesystem_ufs='CELL_FS_UFS';
 var filesystem_path='CELL_FS_PATH:';
 
