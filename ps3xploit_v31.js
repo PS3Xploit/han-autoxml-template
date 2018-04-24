@@ -650,8 +650,8 @@ var progress_msg_frag2='%, please wait...</span></b></h1>';
 
 //DEX 4.81
 var toc_addr_481_d = 0x705610;
-var prx_explore_plugin_toc_addr_481_d=0x01A0654C;// 0x2D1BB0 size 0x30
-var vsh_whatsnew_patch_addr_481_d=0x01A05D28;// explore_plugin
+var prx_explore_plugin_toc_addr_481_d=0x0169654C;// old 0x01A0654C (text 0x01770000 / data 0x01680000) TOC 0x2D1BB0 size 0x30
+var vsh_whatsnew_patch_addr_481_d=0x016D5D28;//0x01695D28;// old 0x01A05D28 explore_plugin
 var vsh_whatsnew_xml_addr_481_d=0x019DE9B0;// 0x26E9B0
 var vsh_opd_addr_481_d=0x6FBC28;
 var vsh_opd_patch_481_d=0x096E14;
@@ -752,9 +752,9 @@ var e_fopen_write_close=0x42B70C;
 
 //VSH CEX 4.81
 var toc_addr_481 = 0x6F5520;
-var prx_explore_plugin_toc_addr_481=0x01A0654C;// 0x2D0DF0 size 0x30
-var vsh_whatsnew_patch_addr_481=0x01A05D28;// explore_plugin
-var vsh_whatsnew_xml_addr_481=0x019DE9B0;// 0x26DCB0
+var prx_explore_plugin_toc_addr_481=0x016C654C;// (text 0x01760000 / data 0x01160000) 0x2D0DF0 size 0x30
+var vsh_whatsnew_patch_addr_481=0x016C5D28;// explore_plugin
+var vsh_whatsnew_xml_addr_481=0x019CE9B0;// 0x26DCB0
 var default_vsh_pub_toc_481=0x6ED574;
 var vsh_opd_patch_481=0x096D5C;
 var vsh_opd_addr_481=0x6EBB38;
