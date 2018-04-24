@@ -701,9 +701,9 @@ var e_fopen_write_close=0x42B708;
 
 //DEX 4.82
 var toc_addr_482_d = 0x705640;
-var prx_explore_plugin_toc_addr_482_d=0x0;// 0x2D1BB0 size 0x30
-var vsh_whatsnew_patch_addr_482_d=0x0;// explore_plugin
-var vsh_whatsnew_xml_addr_482_d=0x0;// 0x26E9B0 
+var prx_explore_plugin_toc_addr_482_d=0x016D654C;// (text 0x01770000 / data 0x016C0000) TOC 0x2D1BB0 size 0x30
+var vsh_whatsnew_patch_addr_482_d=0x016D5D28;// explore_plugin
+var vsh_whatsnew_xml_addr_482_d=0x019DE9B0;// 0x26E9B0 
 var vsh_opd_addr_482_d=0x6FBC58;
 var vsh_opd_patch_482_d=0x096E14;
 var vsh_toc_addr_screenshot_482_d=0x730F1C;
