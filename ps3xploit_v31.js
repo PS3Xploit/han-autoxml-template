@@ -803,9 +803,9 @@ var e_fopen_write_close=0x423B14;
 
 //CEX 4.82
 var toc_addr_482 = 0x6F5550;
-var prx_explore_plugin_toc_addr_482=0x01A0654C;// 0x2D0DF0 size 0x30
-var vsh_whatsnew_patch_addr_482=0x01A05D28;// explore_plugin
-var vsh_whatsnew_xml_addr_482=0x019DE9B0;// 0x26DCB0 
+var prx_explore_plugin_toc_addr_482=0x016C654C;// (text 0x01760000 / data 0x01160000) 0x2D0DF0 size 0x30
+var vsh_whatsnew_patch_addr_482=0x016C5D28;// explore_plugin
+var vsh_whatsnew_xml_addr_482=0x019CE9B0;// 0x26DCB0
 var default_vsh_pub_toc_482=0x6ED5A4;
 var vsh_opd_patch_482=0x96D5C;
 var vsh_opd_addr_482=0x6EBB68;
