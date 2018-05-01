@@ -1,5 +1,9 @@
 
 
+Devices
+--------------
+/dev/swdrv
+
 
 Protocol
 --------------
@@ -228,6 +232,7 @@ xCB_DB_TYPE_MEMORY
 Device Types
 -------------
 xCB_DEVICE_TYPE_CF
+xCB_DEVICE_TYPE_ETHER
 xCB_DEVICE_TYPE_RESERVED_6
 xCB_DEVICE_TYPE_RESERVED_7
 xCB_DEVICE_TYPE_SD
@@ -248,18 +253,30 @@ xCB_LIST_TYPE_VIDEO_USER_DEFINED
 Media Types
 --------------
 xCB_MEDIA_FORMAT_DATA
+xCB_MEDIA_FORMAT_PS1GAME_CD
 xCB_MEDIA_FORMAT_PS2GAME_CD
 xCB_MEDIA_FORMAT_PS2GAME_DVD
 
 xCB_MEDIA_INSERTED
 
+xCB_MEDIA_TYPE_CDDA
+xCB_MEDIA_TYPE_CF
+xCB_MEDIA_TYPE_DLNA
+xCB_MEDIA_TYPE_DSD
 xCB_MEDIA_TYPE_FLASH
 xCB_MEDIA_TYPE_HDD
+xCB_MEDIA_TYPE_MS
 xCB_MEDIA_TYPE_MS_IOX
+xCB_MEDIA_TYPE_PDA
 xCB_MEDIA_TYPE_PLUS
 xCB_MEDIA_TYPE_PS1_CD
 xCB_MEDIA_TYPE_PS1MC
-
+xCB_MEDIA_TYPE_PS2MC
+xCB_MEDIA_TYPE_SD
+xCB_DEVICE_TYPE_USBAADWM
+xCB_DEVICE_TYPE_USBCAMERA
+xCB_DEVICE_TYPE_USBMASS
+xCB_DEVICE_TYPE_USBPSP
 
 
 
@@ -302,9 +319,15 @@ Psv:Common.dirPath /dev_MCA
 
 StorageMedia:StorageMedia.autoFocus
 StorageMedia:StorageMedia.audio.channelType
+StorageMedia:StorageMedia.Common.dirPath
 StorageMedia:StorageMedia.Common.fileName
+StorageMedia:StorageMedia.deviceType
 StorageMedia:StorageMedia.hybrid
+StorageMedia:StorageMedia.id
 StorageMedia:StorageMedia.mediaFormat
+StorageMedia:StorageMedia.reserved25
+StorageMedia:StorageMedia.stat.version
+StorageMedia:StorageMedia.type
 
 
 Video:Common.dirPath
