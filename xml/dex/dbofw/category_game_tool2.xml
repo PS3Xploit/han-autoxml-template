@@ -77,7 +77,7 @@
 			<Query
 				class="type:x-xmb/folder-pixmap"
 				key="pett_xmb"
-				src="xmb://localhost/dev_hdd0/game/PS3PETXMB/USRDIR/pett_xmb.xml#pett_xmb_main"
+				src="xmb://localhost/dev_hdd0/game/PS3PETXMB/USRDIR/pett_xmb.xml#pett_xmb_main_dex"
 				/>
 			<Query
 				class="type:x-xmb/folder-pixmap"
