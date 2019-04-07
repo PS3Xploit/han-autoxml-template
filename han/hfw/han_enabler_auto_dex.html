@@ -45,6 +45,7 @@ function initROP(init)
 		+store_word(toc_entry1_addr, vsh_opd_patch+4)
 		+store_word(toc_entry3_addr, vsh_opd_patch+4)
 		+store_word(toc_entry5_addr, vsh_opd_patch+4)
+		+store_word(ipf1_addr, ipf2_addr) 
 		+store_word(default_vsh_pub_toc, vsh_ps3xploit_key_toc)
 		+memcpy(vsh_ps3xploit_key_toc-0x20, index_key_addr, (index_key.length/2))
 		+memcpy(vsh_ps3xploit_key_toc,ps3xploit_ecdsa_key_addr,(ps3xploit_ecdsa_key.length/2))
@@ -116,7 +117,7 @@ function triggerX()
 </head>
 	<body id="bodyId" style="background-color:#FFFFFF" onload="initROP(true);">
 	<div id="headerId">
-	<h1>Enabling HAN For 4.84 HFW DEX...</h1>
+	<h1>Enabling HAN For DEX...</h1>
 	</div>
 	<span id="hideme" style="visibility:hidden">
 	<p><button id="btnROP" type="button" onclick="initROP(true);" style="visibility:hidden"></button><input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();" style="visibility:hidden"/><span id="dex_txt" style="visibility:hidden"><input type="checkbox" id="dex" name="DEX" disabled="" onclick="dex();" style="visibility:hidden"/></span></p>
