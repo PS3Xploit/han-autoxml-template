@@ -117,8 +117,7 @@ function initROP(init)
 		if((j2===jump_2)&&(j1===jump_1)&&(x===xtra_data)&&(sf===stack_frame))
 		{
 			if(t_out!==0){clearTimeout(t_out);}
-			showResult(hr+"<h1><b><font color=%22386E38%22>HAN Copier initialized successfully.</font></b></h1><h3><b><span style='color:#000000;'>You can now proceed to copy the file.</span></b></h3>");
-			enable_trigger();
+			triggerX();// enables auto trigger
 		}
 		else
 		{
@@ -151,7 +150,7 @@ function triggerX()
 </head>
 	<body id="bodyId" style="background-color:#FFFFFF" onload="initROP(true);">
 	<div id="headerId">
-	<h1>Copying act.dat/rif For 4.84 HFW DEX...</h1>
+	<h1>Copying act.dat/rif For DEX...</h1>
 	</div>
 	<span id="hideme" style="visibility:hidden">
 	<select id="comboactPath" name="actPath" size="1" onChange="selectfilePath()">
